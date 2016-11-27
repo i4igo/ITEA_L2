@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.itea.android.itea_l2.MainActivity"
+    android:background="#11c226">
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">-->
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:weightSum="8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#c21111">
+
+            <!-- LinearLayout 1 -->
+            <LinearLayout
+                android:weightSum="5"
+                android:orientation="horizontal"
+                android:layout_weight="4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#bfbfe2">
+
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:background="@android:color/holo_orange_dark" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@id/activity_main"
+                    android:orientation="vertical"
+                    android:layout_weight="3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:id="@+id/tName"
+                        android:text="@string/tName"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/eName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/tLName"
+                        android:text="@string/tLName"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/eLName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tEmail"
+                        android:text="@string/tEmail"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:id="@+id/eMail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp" />
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbAuto"/>
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbCCard"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- LinearLayout 2 -->
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="#6e6e78"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/cbJava"
+                        android:text="@string/cbJava"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <CheckBox
+                        android:id="@+id/cbAndroid"
+                        android:text="@string/cbAndroid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <CheckBox
+                        android:id="@+id/cbJavaEE"
+                        android:text="@string/cbJavaEE"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <CheckBox
+                        android:id="@+id/cbC"
+                        android:text="@string/cbC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <CheckBox
+                        android:id="@+id/cbPHP"
+                        android:text="@string/cbPHP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                    <CheckBox
+                        android:id="@+id/cbOther"
+                        android:text="@string/cbOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/rbFrelance"
+                            android:text="@string/rbFrelance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/rbFulltime"
+                            android:text="@string/rbFulltime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/rbRemote"
+                            android:text="@string/rbRemote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/rbOther"
+                            android:text="@string/rbOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                        </RadioButton>
+
+                    </RadioGroup>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- LinearLayout 3 -->
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:padding="10dp"
+                android:background="#6e6e78">
+
+                <Button
+                    android:id="@+id/bSend"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bSend"/>
+
+                <Button
+                    android:id="@+id/bCancel"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bCancel"/>
+
+                <Button
+                    android:id="@+id/bLater"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bLater"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    <!--</ScrollView>-->
+
+</RelativeLayout>
