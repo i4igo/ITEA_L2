@@ -21,12 +21,12 @@
             <!-- LinearLayout 1 -->
             <LinearLayout
                 android:weightSum="5"
-                android:orientation="horizontal"
                 android:layout_weight="4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="#bfbfe2">
+                android:background="#b1c7ff">
 
+                <!--icon contact-->
                 <LinearLayout
                     android:layout_weight="2"
                     android:layout_width="0dp"
@@ -37,12 +37,12 @@
                         android:id="@+id/image"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:background="@android:color/holo_orange_dark" />
+                        android:background="@drawable/avatar"/>
 
                 </LinearLayout>
 
+                <!---->
                 <LinearLayout
-                    android:id="@id/activity_main"
                     android:orientation="vertical"
                     android:layout_weight="3"
                     android:layout_width="0dp"
@@ -55,64 +55,77 @@
                         android:text="@string/tName"
                         android:textSize="10sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:textStyle="normal|bold" />
 
                     <EditText
                         android:id="@+id/eName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"/>
+                        android:textSize="12sp"
+                        android:inputType="text"/>
 
                     <TextView
                         android:id="@+id/tLName"
                         android:text="@string/tLName"
                         android:textSize="10sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:textStyle="normal|bold" />
 
                     <EditText
                         android:id="@+id/eLName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:inputType="text"/>
 
                     <TextView
                         android:id="@+id/tEmail"
                         android:text="@string/tEmail"
                         android:textSize="10sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:textStyle="normal|bold" />
 
                     <EditText
                         android:id="@+id/eMail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:inputType="textEmailAddress"/>
 
                     <CheckBox
+                        android:id="@+id/cbAuto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
                         android:text="@string/cbAuto"/>
 
                     <CheckBox
+                        android:id="@+id/cbCCard"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
                         android:text="@string/cbCCard"/>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- LinearLayout 2 -->
+            <!-- LinearLayout skil -->
             <LinearLayout
                 android:weightSum="2"
-                android:orientation="horizontal"
                 android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="#6e6e78"
+                android:background="#b1c7ff"
                 android:padding="20dp">
 
+                <!-- checkbox -->
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -157,6 +170,7 @@
 
                 </LinearLayout>
 
+                <!-- radiobutton -->
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -200,7 +214,7 @@
 
             </LinearLayout>
 
-            <!-- LinearLayout 3 -->
+            <!-- LinearLayout buttons -->
             <LinearLayout
                 android:weightSum="3"
                 android:orientation="horizontal"
@@ -208,13 +222,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="10dp"
-                android:background="#6e6e78">
+                android:background="#b1c7ff">
 
                 <Button
                     android:id="@+id/bSend"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/bSend"/>
 
                 <Button
@@ -222,6 +237,7 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/bCancel"/>
 
                 <Button
@@ -229,6 +245,7 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:text="@string/bLater"/>
             </LinearLayout>
 
