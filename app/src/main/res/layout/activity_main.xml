@@ -4,8 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.itea.android.itea_l2.MainActivity"
-    android:background="#11c226">
+    tools:context="com.itea.android.itea_l2.MainActivity">
 
     <!--<ScrollView
         android:layout_width="match_parent"
@@ -15,8 +14,7 @@
             android:orientation="vertical"
             android:weightSum="8"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#c21111">
+            android:layout_height="match_parent">
 
             <!-- LinearLayout 1 -->
             <LinearLayout
@@ -28,17 +26,26 @@
 
                 <!--icon contact-->
                 <LinearLayout
+                    android:weightSum="1"
+                    android:orientation="vertical"
                     android:layout_weight="2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="10dp">
 
-                    <ImageView
-                        android:id="@+id/image"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:background="@drawable/avatar"/>
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="#FFFFFF">
 
+                        <ImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:background="@drawable/avatar"/>
+
+                    </FrameLayout>
                 </LinearLayout>
 
                 <!---->
@@ -47,55 +54,60 @@
                     android:layout_weight="3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
+                    android:paddingLeft="10dp">
 
                     <TextView
                         android:id="@+id/tName"
                         android:text="@string/tName"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:textStyle="normal|bold" />
+                        android:paddingLeft="10dp"
+                        android:textStyle="normal|bold"/>
 
                     <EditText
                         android:id="@+id/eName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:inputType="text"/>
+                        android:maxLength="10"
+                        android:inputType="textPersonName"/>
 
                     <TextView
                         android:id="@+id/tLName"
                         android:text="@string/tLName"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:textStyle="normal|bold" />
+                        android:paddingLeft="10dp"
+                        android:textStyle="normal|bold"/>
 
                     <EditText
                         android:id="@+id/eLName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:inputType="text"/>
+                        android:maxLength="10"
+                        android:inputType="textPersonName"/>
 
                     <TextView
                         android:id="@+id/tEmail"
                         android:text="@string/tEmail"
-                        android:textSize="10sp"
+                        android:textSize="12sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="10dp"
-                        android:textStyle="normal|bold" />
+                        android:paddingLeft="10dp"
+                        android:textStyle="normal|bold"/>
 
                     <EditText
                         android:id="@+id/eMail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
+                        android:maxLength="15"
                         android:inputType="textEmailAddress"/>
 
                     <CheckBox
@@ -116,8 +128,143 @@
 
             </LinearLayout>
 
-            <!-- LinearLayout skil -->
             <LinearLayout
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="#b1c7ff">
+
+                <TableLayout
+                    android:weightSum="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="*"
+                    android:background="#000000">
+
+                    <TableRow>
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:background="#83a6ff"
+                            android:layout_margin="1dip"
+                            android:gravity="center_horizontal"
+                            android:text="@string/tSkills"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:background="#83a6ff"
+                            android:layout_marginTop="1dip"
+                            android:layout_marginRight="1dip"
+                            android:layout_marginBottom="1dip"
+                            android:gravity="center_horizontal"
+                            android:text="@string/tWSchedule"
+                            android:textSize="20sp"
+                            android:textStyle="bold"/>
+                    </TableRow>
+
+                    <TableRow
+                        android:background="#b1c7ff"
+                        android:layout_marginLeft="1dip"
+                        android:layout_marginRight="1dip"
+                        android:layout_marginBottom="1dip"
+                        android:stretchColumns="*">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="1dip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <CheckBox
+                                android:id="@+id/cbJava"
+                                android:text="@string/cbJava"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <CheckBox
+                                android:id="@+id/cbAndroid"
+                                android:text="@string/cbAndroid"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <CheckBox
+                                android:id="@+id/cbJavaEE"
+                                android:text="@string/cbJavaEE"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <CheckBox
+                                android:id="@+id/cbC"
+                                android:text="@string/cbC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <CheckBox
+                                android:id="@+id/cbPHP"
+                                android:text="@string/cbPHP"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <CheckBox
+                                android:id="@+id/cbOther"
+                                android:text="@string/cbOther"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_margin="1dip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <RadioButton
+                                    android:id="@+id/rbFrelance"
+                                    android:text="@string/rbFrelance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                </RadioButton>
+
+                                <RadioButton
+                                    android:id="@+id/rbFulltime"
+                                    android:text="@string/rbFulltime"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                </RadioButton>
+
+                                <RadioButton
+                                    android:id="@+id/rbRemote"
+                                    android:text="@string/rbRemote"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                </RadioButton>
+
+                                <RadioButton
+                                    android:id="@+id/rbOther"
+                                    android:text="@string/rbOther"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+                                </RadioButton>
+
+                            </RadioGroup>
+                        </LinearLayout>
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+            <!-- LinearLayout skil -->
+            <!--<LinearLayout
                 android:weightSum="2"
                 android:layout_weight="3"
                 android:layout_width="match_parent"
@@ -125,7 +272,7 @@
                 android:background="#b1c7ff"
                 android:padding="20dp">
 
-                <!-- checkbox -->
+                &lt;!&ndash; checkbox &ndash;&gt;
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -136,41 +283,41 @@
                         android:id="@+id/cbJava"
                         android:text="@string/cbJava"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                     <CheckBox
                         android:id="@+id/cbAndroid"
                         android:text="@string/cbAndroid"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                     <CheckBox
                         android:id="@+id/cbJavaEE"
                         android:text="@string/cbJavaEE"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                     <CheckBox
                         android:id="@+id/cbC"
                         android:text="@string/cbC"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                     <CheckBox
                         android:id="@+id/cbPHP"
                         android:text="@string/cbPHP"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                     <CheckBox
                         android:id="@+id/cbOther"
                         android:text="@string/cbOther"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content" />
 
                 </LinearLayout>
 
-                <!-- radiobutton -->
+                &lt;!&ndash; radiobutton &ndash;&gt;
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="0dp"
@@ -212,7 +359,7 @@
                     </RadioGroup>
                 </LinearLayout>
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <!-- LinearLayout buttons -->
             <LinearLayout
