@@ -8,6 +8,9 @@
     <string name="cbAuto">Auto</string>
     <string name="cbCCard">Credit card</string>
 
+    <string name="tSkills">Skills</string>
+    <string name="tWSchedule">Work schedule</string>
+
     <string name="cbJava">Java</string>
     <string name="cbAndroid">Android</string>
     <string name="cbJavaEE">JavaEE</string>
