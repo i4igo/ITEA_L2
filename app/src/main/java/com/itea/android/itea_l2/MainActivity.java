@@ -3,7 +3,6 @@ package com.itea.android.itea_l2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected EditText eMail;
 
     private String sName;
-    private SpannableStringBuilder stringBuilder;
+    private String sLName;
 
     protected CheckBox cbAuto;
     protected CheckBox cbCCard;
@@ -40,12 +39,15 @@ public class MainActivity extends AppCompatActivity {
     protected Button bCancel;
     protected Button bLater;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         eName = (EditText) findViewById(R.id.eName);
+        //eName.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        sName = eName.getText().toString();
         eName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -54,8 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                stringBuilder = (SpannableStringBuilder) charSequence;
-                sName = stringBuilder.toString();
+                sName = charSequence.toString();
             }
 
             @Override
@@ -64,8 +65,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         eLName = (EditText) findViewById(R.id.eLName);
+        sLName = eLName.getText().toString();
+        eLName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                sLName = charSequence.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         eMail = (EditText) findViewById(R.id.eMail);
 
@@ -79,10 +96,12 @@ public class MainActivity extends AppCompatActivity {
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!sName.matches(""))
-                Toast.makeText(MainActivity.this, sName, Toast.LENGTH_SHORT).show();
+                if(!sName.equals("")) {
+                    if (!sLName.equals(""))
+                        Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName, Toast.LENGTH_SHORT).show();
+                }
                 else
-                    Toast.makeText(MainActivity.this, "укажите имя пользователя", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "укажите данные пользователя", Toast.LENGTH_SHORT).show();
             }
         });
 
