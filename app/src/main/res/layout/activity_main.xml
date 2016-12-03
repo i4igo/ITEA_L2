@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="8">
+        android:weightSum="9">
 
-        <!-- LinearLayout 1 -->
+        <!--personal-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -47,7 +47,7 @@
                 </FrameLayout>
             </LinearLayout>
 
-            <!--  -->
+            <!--personal data-->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -55,6 +55,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="10dp">
 
+                <!--Name-->
                 <TextView
                     android:id="@+id/tName"
                     android:layout_width="match_parent"
@@ -73,6 +74,7 @@
                     android:maxLength="10"
                     android:textSize="12sp" />
 
+                <!--Last name-->
                 <TextView
                     android:id="@+id/tLName"
                     android:layout_width="match_parent"
@@ -91,6 +93,7 @@
                     android:maxLength="10"
                     android:textSize="12sp" />
 
+                <!--Email-->
                 <TextView
                     android:id="@+id/tEmail"
                     android:layout_width="match_parent"
@@ -106,16 +109,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
-                    android:maxLength="15"
+                    android:maxLength="25"
                     android:textSize="12sp" />
 
+                <!--Avto-->
                 <CheckBox
-                    android:id="@+id/cbAuto"
+                    android:id="@+id/cbAvto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:text="@string/cbAuto" />
+                    android:text="@string/cbAvto" />
 
+                <!--Credit card-->
                 <CheckBox
                     android:id="@+id/cbCCard"
                     android:layout_width="wrap_content"
@@ -127,155 +132,218 @@
 
         </LinearLayout>
 
-        <!-- LinearLayout skil -->
+        <!--skills and work schedule-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="3"
+            android:layout_weight="4"
             android:background="#b1c7ff"
+            android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
 
-            <TableLayout
+            <!--верхняя горизонтальная линия-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"></LinearLayout>
+
+            </TableRow>
+
+            <!--шапка таблицы-->
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#000000"
-                android:stretchColumns="*"
                 android:weightSum="2">
 
-                <!-- head -->
-                <TableRow>
-                    <!-- skills -->
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_margin="1dip"
-                        android:layout_weight="1"
-                        android:background="#83a6ff"
-                        android:gravity="center_horizontal"
-                        android:text="@string/tSkills"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <!--левая вертикальная линия-->
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"></LinearLayout>
 
-                    <!-- work schedule -->
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_marginBottom="1dip"
-                        android:layout_marginRight="1dip"
-                        android:layout_marginTop="1dip"
-                        android:layout_weight="1"
-                        android:background="#83a6ff"
-                        android:gravity="center_horizontal"
-                        android:text="@string/tWSchedule"
-                        android:textSize="20sp"
-                        android:textStyle="bold"/>
-                </TableRow>
+                <!--Skills-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:background="#83a6ff"
+                    android:gravity="center_horizontal"
+                    android:text="@string/tSkills"
+                    android:textSize="20sp"
+                    android:textStyle="bold|normal" />
 
-                <TableRow
-                    android:layout_marginBottom="1dip"
-                    android:layout_marginLeft="1dip"
-                    android:layout_marginRight="1dip"
-                    android:background="#b1c7ff"
-                    android:stretchColumns="*">
+                <!--средняя вертикальная линия-->
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"></LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="1dip"
-                        android:orientation="vertical">
+                <!--Work schedule-->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#83a6ff"
+                    android:gravity="center_horizontal"
+                    android:text="@string/tWSchedule"
+                    android:textSize="20sp"
+                    android:textStyle="bold|normal" />
 
-                        <CheckBox
-                            android:id="@+id/cbJava"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cbJava" />
+                <!--правая вертикальная линия-->
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"></LinearLayout>
+            </TableRow>
 
-                        <CheckBox
-                            android:id="@+id/cbAndroid"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cbAndroid" />
+            <!--средняя горизонтальная лини-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                        <CheckBox
-                            android:id="@+id/cbJavaEE"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cbJavaEE" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"></LinearLayout>
 
-                        <CheckBox
-                            android:id="@+id/cbC"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cbC" />
+            </TableRow>
 
-                        <CheckBox
-                            android:id="@+id/cbPHP"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cbPHP" />
+            <!--тело таблицы-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2">
 
-                        <CheckBox
-                            android:id="@+id/cbOther"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/cbOther" />
+                <!--левая вертикальная линия-->
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"></LinearLayout>
 
-                    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-                    <!--<LinearLayout
-                        android:layout_gravity="center_horizontal"
+                    <!--Java-->
+                    <CheckBox
+                        android:id="@+id/cbJava"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbJava" />
+
+                    <!--Android-->
+                    <CheckBox
+                        android:id="@+id/cbAndroid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbAndroid" />
+
+                    <!--JavaEE-->
+                    <CheckBox
+                        android:id="@+id/cbJavaEE"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbJavaEE" />
+
+                    <!--C#-->
+                    <CheckBox
+                        android:id="@+id/cbC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbC" />
+
+                    <!--PHP-->
+                    <CheckBox
+                        android:id="@+id/cbPHP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbPHP" />
+
+                    <!--Other-->
+                    <CheckBox
+                        android:id="@+id/cbOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cbOther" />
+
+                </LinearLayout>
+
+                <!--средняя вертикальная линия-->
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <view
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="#000000"/>
-                    </LinearLayout>-->
+                        <!--Frelance-->
+                        <RadioButton
+                            android:id="@+id/rbFrelance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbFrelance"></RadioButton>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="1dip"
-                        android:orientation="vertical">
+                        <!--Fulltime-->
+                        <RadioButton
+                            android:id="@+id/rbFulltime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbFulltime"></RadioButton>
 
-                        <RadioGroup
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                        <!--Remote-->
+                        <RadioButton
+                            android:id="@+id/rbRemote"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbRemote"></RadioButton>
 
-                            <RadioButton
-                                android:id="@+id/rbFrelance"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/rbFrelance"></RadioButton>
+                        <!--Other-->
+                        <RadioButton
+                            android:id="@+id/rbOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/rbOther"></RadioButton>
 
-                            <RadioButton
-                                android:id="@+id/rbFulltime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/rbFulltime"></RadioButton>
+                    </RadioGroup>
+                </LinearLayout>
 
-                            <RadioButton
-                                android:id="@+id/rbRemote"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/rbRemote"></RadioButton>
+                <!--правая вертикальная линия-->
+                <LinearLayout
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#000000"></LinearLayout>
 
-                            <RadioButton
-                                android:id="@+id/rbOther"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/rbOther"></RadioButton>
+            </TableRow>
 
-                        </RadioGroup>
-                    </LinearLayout>
-                </TableRow>
-            </TableLayout>
+            <!--нижняя горизонтальная линия-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"></LinearLayout>
+
+            </TableRow>
 
         </LinearLayout>
 
-        <!-- LinearLayout buttons -->
+        <!--buttons-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -285,6 +353,7 @@
             android:padding="10dp"
             android:weightSum="3">
 
+            <!--Send-->
             <Button
                 android:id="@+id/bSend"
                 android:layout_width="0dp"
@@ -293,6 +362,7 @@
                 android:layout_weight="1"
                 android:text="@string/bSend" />
 
+            <!--Cancel-->
             <Button
                 android:id="@+id/bCancel"
                 android:layout_width="0dp"
@@ -301,6 +371,7 @@
                 android:layout_weight="1"
                 android:text="@string/bCancel" />
 
+            <!--Later-->
             <Button
                 android:id="@+id/bLater"
                 android:layout_width="0dp"
