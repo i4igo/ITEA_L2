@@ -13,38 +13,37 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected EditText eName;
-    protected EditText eLName;
-    protected EditText eMail;
+    private String sName, sLName, sMail;
 
-    private String sName;
-    private String sLName;
+    private EditText eName, eLName, eMail;
 
-    protected CheckBox cbAuto;
-    protected CheckBox cbCCard;
+    private CheckBox cbAuto, cbCCard;
 
-    protected CheckBox cbJava;
-    protected CheckBox cbAndroid;
-    protected CheckBox cbJavaEE;
-    protected CheckBox cbC;
-    protected CheckBox cbPHP;
-    protected CheckBox cbOther;
+    private CheckBox cbJava;
+    private CheckBox cbAndroid;
+    private CheckBox cbJavaEE;
+    private CheckBox cbC;
+    private CheckBox cbPHP;
+    private CheckBox cbOther;
+    private StringBuilder skills;
 
-    protected RadioButton rbFrelance;
-    protected RadioButton rbFulltime;
-    protected RadioButton rbRemote;
-    protected RadioButton rbOther;
+    private RadioButton rbFrelance;
+    private RadioButton rbFulltime;
+    private RadioButton rbRemote;
+    private RadioButton rbOther;
+    private String workSchedule;
 
-    protected Button bSend;
-    protected Button bCancel;
-    protected Button bLater;
+    private Button bSend, bCancel, bLater;
 
+    private StringBuilder personal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* связываем переменную с view-элементом
+        *  подключаем слушатель*/
         eName = (EditText) findViewById(R.id.eName);
         //eName.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         sName = eName.getText().toString();
@@ -65,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /* связываем переменную с view-элементом
+        *  подключаем слушатель*/
         eLName = (EditText) findViewById(R.id.eLName);
         sLName = eLName.getText().toString();
         eLName.addTextChangedListener(new TextWatcher() {
@@ -84,24 +85,97 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /* связываем переменную с view-элементом
+        *  подключаем слушатель*/
         eMail = (EditText) findViewById(R.id.eMail);
+        sMail = eMail.getText().toString();
+        eMail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                sMail = charSequence.toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         cbAuto = (CheckBox) findViewById(R.id.cbAuto);
-        cbAuto.isChecked();
-
         cbCCard = (CheckBox) findViewById(R.id.cbCCard);
-        cbAuto.isChecked();
 
+        cbJava = (CheckBox) findViewById(R.id.cbJava);
+        cbAndroid = (CheckBox) findViewById(R.id.cbAndroid);
+        cbJavaEE = (CheckBox) findViewById(R.id.cbJavaEE);
+        cbC = (CheckBox) findViewById(R.id.cbC);
+        cbPHP = (CheckBox) findViewById(R.id.cbPHP);
+        cbOther = (CheckBox) findViewById(R.id.cbOther);
+
+        rbFrelance = (RadioButton) findViewById(R.id.rbFrelance);
+        rbFulltime = (RadioButton) findViewById(R.id.rbFulltime);
+        rbRemote = (RadioButton) findViewById(R.id.rbRemote);
+        rbOther = (RadioButton) findViewById(R.id.rbOther);
+
+        /* включаем слушатель на кнопку*/
+        personal = new StringBuilder();
         bSend = (Button) findViewById(R.id.bSend);
         bSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!sName.equals("")) {
                     if (!sLName.equals(""))
-                        Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName, Toast.LENGTH_SHORT).show();
+                        if (!sMail.equals(""))
+                            Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName + " eMail: " + sMail, Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(MainActivity.this, "укажите eMail пользователя", Toast.LENGTH_SHORT).show();
+                    else
+                        Toast.makeText(MainActivity.this, "укажите last name пользователя", Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(MainActivity.this, "укажите данные пользователя", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "укажите name пользователя", Toast.LENGTH_SHORT).show();
+
+//                personal.append("у пользователя есть: ");
+
+                if(cbAuto.isChecked())
+//                    personal.append(cbAuto.getText().toString());
+                    //Toast.makeText(MainActivity.this, "у пользователя есть " + cbAuto.getText(), Toast.LENGTH_SHORT).show();
+
+                if(cbCCard.isChecked())
+//                    personal.append(cbCCard.getText());
+                    //Toast.makeText(MainActivity.this, "у пользователя есть " + cbCCard.getText(), Toast.LENGTH_SHORT).show();
+
+//                String sss = personal.toString();
+
+//                Toast.makeText(MainActivity.this, "у пользователя есть " + sss, Toast.LENGTH_SHORT).show();
+
+                if (cbJava.isChecked())
+                    skills.append(cbJava.getText());
+                if (cbAndroid.isChecked())
+                    skills.append("" + cbAndroid.getText());
+                if (cbJavaEE.isChecked())
+                    skills.append(cbJavaEE.getText());
+                if (cbC.isChecked())
+                    skills.append(cbC.getText());
+                if (cbPHP.isChecked())
+                    skills.append(cbPHP.getText());
+                if (cbOther.isChecked())
+                    skills.append(cbOther.getText());
+
+                if (rbFrelance.isChecked())
+                    workSchedule = "" + rbFrelance.getText();
+                if (rbFulltime.isChecked())
+                    workSchedule = "" + rbFulltime.getText();
+                if (rbRemote.isChecked())
+                    workSchedule = "" + rbRemote.getText();
+                if (rbOther.isChecked())
+                    workSchedule = "" + rbOther.getText();
+
+                Toast.makeText(MainActivity.this, "skills: " + skills + ", " + "work schedule: " + workSchedule, Toast.LENGTH_SHORT).show();
             }
         });
 

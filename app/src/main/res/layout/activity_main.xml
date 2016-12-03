@@ -10,393 +10,307 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">-->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="8">
+
+        <!-- LinearLayout 1 -->
         <LinearLayout
-            android:orientation="vertical"
-            android:weightSum="8"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:background="#b1c7ff"
+            android:weightSum="5">
 
-            <!-- LinearLayout 1 -->
+            <!--icon contact-->
             <LinearLayout
-                android:weightSum="5"
-                android:layout_weight="4"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="#b1c7ff">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:weightSum="1">
 
-                <!--icon contact-->
-                <LinearLayout
-                    android:weightSum="1"
-                    android:orientation="vertical"
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:padding="10dp">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#FFFFFF">
 
-                    <FrameLayout
-                        android:layout_weight="1"
+                    <ImageView
+                        android:id="@+id/image"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:background="#FFFFFF">
-
-                        <ImageView
-                            android:id="@+id/image"
-                            android:layout_width="match_parent"
-                            android:layout_height="150dp"
-                            android:background="@drawable/avatar"/>
-
-                    </FrameLayout>
-                </LinearLayout>
-
-                <!---->
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_weight="3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="10dp">
-
-                    <TextView
-                        android:id="@+id/tName"
-                        android:text="@string/tName"
-                        android:textSize="12sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingLeft="10dp"
-                        android:textStyle="normal|bold"/>
-
-                    <EditText
-                        android:id="@+id/eName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:maxLength="10"
-                        android:inputType="textPersonName"/>
-
-                    <TextView
-                        android:id="@+id/tLName"
-                        android:text="@string/tLName"
-                        android:textSize="12sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingLeft="10dp"
-                        android:textStyle="normal|bold"/>
-
-                    <EditText
-                        android:id="@+id/eLName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:maxLength="10"
-                        android:inputType="textPersonName"/>
-
-                    <TextView
-                        android:id="@+id/tEmail"
-                        android:text="@string/tEmail"
-                        android:textSize="12sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:paddingLeft="10dp"
-                        android:textStyle="normal|bold"/>
-
-                    <EditText
-                        android:id="@+id/eMail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:maxLength="15"
-                        android:inputType="textEmailAddress"/>
-
-                    <CheckBox
-                        android:id="@+id/cbAuto"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/cbAuto"/>
-
-                    <CheckBox
-                        android:id="@+id/cbCCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:text="@string/cbCCard"/>
-
-                </LinearLayout>
-
+                        android:layout_height="150dp"
+                        android:background="@drawable/avatar" />
+                </FrameLayout>
             </LinearLayout>
 
+            <!--  -->
             <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="#b1c7ff">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
-                <TableLayout
-                    android:weightSum="2"
+                <TextView
+                    android:id="@+id/tName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:stretchColumns="*"
-                    android:background="#000000">
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/tName"
+                    android:textSize="12sp"
+                    android:textStyle="normal|bold" />
 
-                    <TableRow>
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:background="#83a6ff"
-                            android:layout_margin="1dip"
-                            android:gravity="center_horizontal"
-                            android:text="@string/tSkills"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_weight="1"
-                            android:layout_width="0dp"
-                            android:background="#83a6ff"
-                            android:layout_marginTop="1dip"
-                            android:layout_marginRight="1dip"
-                            android:layout_marginBottom="1dip"
-                            android:gravity="center_horizontal"
-                            android:text="@string/tWSchedule"
-                            android:textSize="20sp"
-                            android:textStyle="bold"/>
-                    </TableRow>
-
-                    <TableRow
-                        android:background="#b1c7ff"
-                        android:layout_marginLeft="1dip"
-                        android:layout_marginRight="1dip"
-                        android:layout_marginBottom="1dip"
-                        android:stretchColumns="*">
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="1dip"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <CheckBox
-                                android:id="@+id/cbJava"
-                                android:text="@string/cbJava"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <CheckBox
-                                android:id="@+id/cbAndroid"
-                                android:text="@string/cbAndroid"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <CheckBox
-                                android:id="@+id/cbJavaEE"
-                                android:text="@string/cbJavaEE"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <CheckBox
-                                android:id="@+id/cbC"
-                                android:text="@string/cbC"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <CheckBox
-                                android:id="@+id/cbPHP"
-                                android:text="@string/cbPHP"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                            <CheckBox
-                                android:id="@+id/cbOther"
-                                android:text="@string/cbOther"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="1dip"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <RadioGroup
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent">
-
-                                <RadioButton
-                                    android:id="@+id/rbFrelance"
-                                    android:text="@string/rbFrelance"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-                                </RadioButton>
-
-                                <RadioButton
-                                    android:id="@+id/rbFulltime"
-                                    android:text="@string/rbFulltime"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-                                </RadioButton>
-
-                                <RadioButton
-                                    android:id="@+id/rbRemote"
-                                    android:text="@string/rbRemote"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-                                </RadioButton>
-
-                                <RadioButton
-                                    android:id="@+id/rbOther"
-                                    android:text="@string/rbOther"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-                                </RadioButton>
-
-                            </RadioGroup>
-                        </LinearLayout>
-                    </TableRow>
-                </TableLayout>
-            </LinearLayout>
-            <!-- LinearLayout skil -->
-            <!--<LinearLayout
-                android:weightSum="2"
-                android:layout_weight="3"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="#b1c7ff"
-                android:padding="20dp">
-
-                &lt;!&ndash; checkbox &ndash;&gt;
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/eName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:inputType="textPersonName"
+                    android:maxLength="10"
+                    android:textSize="12sp" />
 
-                    <CheckBox
-                        android:id="@+id/cbJava"
-                        android:text="@string/cbJava"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <CheckBox
-                        android:id="@+id/cbAndroid"
-                        android:text="@string/cbAndroid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <CheckBox
-                        android:id="@+id/cbJavaEE"
-                        android:text="@string/cbJavaEE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <CheckBox
-                        android:id="@+id/cbC"
-                        android:text="@string/cbC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <CheckBox
-                        android:id="@+id/cbPHP"
-                        android:text="@string/cbPHP"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <CheckBox
-                        android:id="@+id/cbOther"
-                        android:text="@string/cbOther"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-                &lt;!&ndash; radiobutton &ndash;&gt;
-                <LinearLayout
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tLName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/tLName"
+                    android:textSize="12sp"
+                    android:textStyle="normal|bold" />
 
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <RadioButton
-                            android:id="@+id/rbFrelance"
-                            android:text="@string/rbFrelance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </RadioButton>
-
-                        <RadioButton
-                            android:id="@+id/rbFulltime"
-                            android:text="@string/rbFulltime"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </RadioButton>
-
-                        <RadioButton
-                            android:id="@+id/rbRemote"
-                            android:text="@string/rbRemote"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </RadioButton>
-
-                        <RadioButton
-                            android:id="@+id/rbOther"
-                            android:text="@string/rbOther"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-                        </RadioButton>
-
-                    </RadioGroup>
-                </LinearLayout>
-
-            </LinearLayout>-->
-
-            <!-- LinearLayout buttons -->
-            <LinearLayout
-                android:weightSum="3"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:padding="10dp"
-                android:background="#b1c7ff">
-
-                <Button
-                    android:id="@+id/bSend"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/eLName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/bSend"/>
+                    android:inputType="textPersonName"
+                    android:maxLength="10"
+                    android:textSize="12sp" />
 
-                <Button
-                    android:id="@+id/bCancel"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tEmail"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/bCancel"/>
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:text="@string/tEmail"
+                    android:textSize="12sp"
+                    android:textStyle="normal|bold" />
 
-                <Button
-                    android:id="@+id/bLater"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/eMail"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/bLater"/>
+                    android:inputType="textEmailAddress"
+                    android:maxLength="15"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/cbAuto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="@string/cbAuto" />
+
+                <CheckBox
+                    android:id="@+id/cbCCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="@string/cbCCard" />
+
             </LinearLayout>
 
         </LinearLayout>
+
+        <!-- LinearLayout skil -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#b1c7ff"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:stretchColumns="*"
+                android:weightSum="2">
+
+                <!-- head -->
+                <TableRow>
+                    <!-- skills -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_margin="1dip"
+                        android:layout_weight="1"
+                        android:background="#83a6ff"
+                        android:gravity="center_horizontal"
+                        android:text="@string/tSkills"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- work schedule -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_marginBottom="1dip"
+                        android:layout_marginRight="1dip"
+                        android:layout_marginTop="1dip"
+                        android:layout_weight="1"
+                        android:background="#83a6ff"
+                        android:gravity="center_horizontal"
+                        android:text="@string/tWSchedule"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginBottom="1dip"
+                    android:layout_marginLeft="1dip"
+                    android:layout_marginRight="1dip"
+                    android:background="#b1c7ff"
+                    android:stretchColumns="*">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="1dip"
+                        android:orientation="vertical">
+
+                        <CheckBox
+                            android:id="@+id/cbJava"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cbJava" />
+
+                        <CheckBox
+                            android:id="@+id/cbAndroid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cbAndroid" />
+
+                        <CheckBox
+                            android:id="@+id/cbJavaEE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cbJavaEE" />
+
+                        <CheckBox
+                            android:id="@+id/cbC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cbC" />
+
+                        <CheckBox
+                            android:id="@+id/cbPHP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cbPHP" />
+
+                        <CheckBox
+                            android:id="@+id/cbOther"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cbOther" />
+
+                    </LinearLayout>
+
+                    <!--<LinearLayout
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <view
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#000000"/>
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="1dip"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <RadioButton
+                                android:id="@+id/rbFrelance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rbFrelance"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/rbFulltime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rbFulltime"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/rbRemote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rbRemote"></RadioButton>
+
+                            <RadioButton
+                                android:id="@+id/rbOther"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rbOther"></RadioButton>
+
+                        </RadioGroup>
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
+
+        <!-- LinearLayout buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#b1c7ff"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="3">
+
+            <Button
+                android:id="@+id/bSend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/bSend" />
+
+            <Button
+                android:id="@+id/bCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/bCancel" />
+
+            <Button
+                android:id="@+id/bLater"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="@string/bLater" />
+        </LinearLayout>
+
+    </LinearLayout>
     <!--</ScrollView>-->
 
 </RelativeLayout>
