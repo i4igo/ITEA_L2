@@ -3,6 +3,7 @@ package com.itea.android.itea_l2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +14,16 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String sName, sLName, sMail;
+    private String sName;
+    private String sLName;
+    private String sMail;
 
-    private EditText eName, eLName, eMail;
+    private EditText eName;
+    private EditText eLName;
+    private EditText eMail;
 
-    private CheckBox cbAuto, cbCCard;
+    private CheckBox cbAuto;
+    private CheckBox cbCCard;
 
     private CheckBox cbJava;
     private CheckBox cbAndroid;
@@ -25,27 +31,122 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox cbC;
     private CheckBox cbPHP;
     private CheckBox cbOther;
-    private StringBuilder skills;
 
     private RadioButton rbFrelance;
     private RadioButton rbFulltime;
     private RadioButton rbRemote;
     private RadioButton rbOther;
-    private String workSchedule;
 
-    private Button bSend, bCancel, bLater;
+    private Button bSend;
+    private Button bCancel;
+    private Button bLater;
 
-    private StringBuilder personal;
+    /**метод проверяет заполнение персональных данных
+     * @return
+     */
+    private boolean personalData() {
+        if (!sName.equals("")) {
+            if (!sLName.equals("")) {
+                if (!sMail.equals("")) {
+                    Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName + " eMail: " + sMail, Toast.LENGTH_SHORT).show();
+                    return true;
+                } else {
+                    eMail.requestFocus();
+                    Toast.makeText(MainActivity.this, "укажите Email пользователя", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                eLName.requestFocus();
+                Toast.makeText(MainActivity.this, "укажите Last name пользователя", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            eName.requestFocus();
+            Toast.makeText(MainActivity.this, "укажите Name пользователя", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    /**формируем personal
+     * через "," перечисляем выбранные элементы
+     * @return
+     */
+    private String selectPersonalData() {
+        StringBuilder personal = new StringBuilder();
+        if (cbAuto.isChecked())
+            personal.append(cbAuto.getText());
+        if (cbCCard.isChecked()) {
+            if (personal.length() > 0)
+                personal.append(", ");
+            personal.append(cbCCard.getText());
+        }
+        if (personal.length() == 0)
+            personal.append("No");
+        return String.valueOf(personal);
+    }
+
+    /**формируем skills
+     * через "," перечисляем выбранные элементы колонки "Skills"
+     * @return
+     */
+    private String selectSkills() {
+        StringBuilder skills = new StringBuilder();
+        if (cbJava.isChecked())
+            skills.append(cbJava.getText());
+        if (cbAndroid.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append("" + cbAndroid.getText());
+        }
+        if (cbJavaEE.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbJavaEE.getText());
+        }
+        if (cbC.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbC.getText());
+        }
+        if (cbPHP.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbPHP.getText());
+        }
+        if (cbOther.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbOther.getText());
+        }
+
+        if (skills.length() == 0)
+            skills.append("No");
+
+        return String.valueOf(skills);
+    }
+
+    /**проверка выбран ли элемент с колонки "Work schedule"
+     * @return
+     */
+    private String selectWork(){
+        String workSchedule = "";
+        if (rbFrelance.isChecked())
+            workSchedule = "" + rbFrelance.getText();
+        if (rbFulltime.isChecked())
+            workSchedule = "" + rbFulltime.getText();
+        if (rbRemote.isChecked())
+            workSchedule = "" + rbRemote.getText();
+        if (rbOther.isChecked())
+            workSchedule = "" + rbOther.getText();
+        return String.valueOf(workSchedule);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /* связываем переменную с view-элементом
-        *  подключаем слушатель*/
+        /**связываем переменную eName с view-элементом
+         * подключаем слушатель*/
         eName = (EditText) findViewById(R.id.eName);
-        //eName.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         sName = eName.getText().toString();
         eName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -64,8 +165,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* связываем переменную с view-элементом
-        *  подключаем слушатель*/
+        /**связываем переменную eLName с view-элементом
+         * подключаем слушатель*/
         eLName = (EditText) findViewById(R.id.eLName);
         sLName = eLName.getText().toString();
         eLName.addTextChangedListener(new TextWatcher() {
@@ -85,8 +186,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /* связываем переменную с view-элементом
-        *  подключаем слушатель*/
+        /**связываем переменную eMail с view-элементом
+         * подключаем слушатель*/
         eMail = (EditText) findViewById(R.id.eMail);
         sMail = eMail.getText().toString();
         eMail.addTextChangedListener(new TextWatcher() {
@@ -121,61 +222,15 @@ public class MainActivity extends AppCompatActivity {
         rbRemote = (RadioButton) findViewById(R.id.rbRemote);
         rbOther = (RadioButton) findViewById(R.id.rbOther);
 
-        /* включаем слушатель на кнопку*/
-        personal = new StringBuilder();
+        /**включаем слушатель на кнопку */
         bSend = (Button) findViewById(R.id.bSend);
         bSend.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                if(!sName.equals("")) {
-                    if (!sLName.equals(""))
-                        if (!sMail.equals(""))
-                            Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName + " eMail: " + sMail, Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(MainActivity.this, "укажите eMail пользователя", Toast.LENGTH_SHORT).show();
-                    else
-                        Toast.makeText(MainActivity.this, "укажите last name пользователя", Toast.LENGTH_SHORT).show();
+                if (personalData()) {
+                    Toast.makeText(MainActivity.this, "finansial: " + selectPersonalData() + ", " + "skills: " + selectSkills() + "; " + "work schedule: " + selectWork(), Toast.LENGTH_SHORT).show();
                 }
-                else
-                    Toast.makeText(MainActivity.this, "укажите name пользователя", Toast.LENGTH_SHORT).show();
-
-//                personal.append("у пользователя есть: ");
-
-                if(cbAuto.isChecked())
-//                    personal.append(cbAuto.getText().toString());
-                    //Toast.makeText(MainActivity.this, "у пользователя есть " + cbAuto.getText(), Toast.LENGTH_SHORT).show();
-
-                if(cbCCard.isChecked())
-//                    personal.append(cbCCard.getText());
-                    //Toast.makeText(MainActivity.this, "у пользователя есть " + cbCCard.getText(), Toast.LENGTH_SHORT).show();
-
-//                String sss = personal.toString();
-
-//                Toast.makeText(MainActivity.this, "у пользователя есть " + sss, Toast.LENGTH_SHORT).show();
-
-                if (cbJava.isChecked())
-                    skills.append(cbJava.getText());
-                if (cbAndroid.isChecked())
-                    skills.append("" + cbAndroid.getText());
-                if (cbJavaEE.isChecked())
-                    skills.append(cbJavaEE.getText());
-                if (cbC.isChecked())
-                    skills.append(cbC.getText());
-                if (cbPHP.isChecked())
-                    skills.append(cbPHP.getText());
-                if (cbOther.isChecked())
-                    skills.append(cbOther.getText());
-
-                if (rbFrelance.isChecked())
-                    workSchedule = "" + rbFrelance.getText();
-                if (rbFulltime.isChecked())
-                    workSchedule = "" + rbFulltime.getText();
-                if (rbRemote.isChecked())
-                    workSchedule = "" + rbRemote.getText();
-                if (rbOther.isChecked())
-                    workSchedule = "" + rbOther.getText();
-
-                Toast.makeText(MainActivity.this, "skills: " + skills + ", " + "work schedule: " + workSchedule, Toast.LENGTH_SHORT).show();
             }
         });
 
