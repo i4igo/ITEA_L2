@@ -3,7 +3,6 @@ package com.itea.android.itea_l2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText eLName;
     private EditText eMail;
 
-    private CheckBox cbAuto;
+    private CheckBox cbAvto;
     private CheckBox cbCCard;
 
     private CheckBox cbJava;
@@ -71,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private String selectPersonalData() {
         StringBuilder personal = new StringBuilder();
-        if (cbAuto.isChecked())
-            personal.append(cbAuto.getText());
+        if (cbAvto.isChecked())
+            personal.append(cbAvto.getText());
         if (cbCCard.isChecked()) {
             if (personal.length() > 0)
                 personal.append(", ");
@@ -207,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cbAuto = (CheckBox) findViewById(R.id.cbAuto);
+        cbAvto = (CheckBox) findViewById(R.id.cbAvto);
         cbCCard = (CheckBox) findViewById(R.id.cbCCard);
 
         cbJava = (CheckBox) findViewById(R.id.cbJava);
@@ -221,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
         rbFulltime = (RadioButton) findViewById(R.id.rbFulltime);
         rbRemote = (RadioButton) findViewById(R.id.rbRemote);
         rbOther = (RadioButton) findViewById(R.id.rbOther);
+        rbOther.setChecked(true);
 
         /**включаем слушатель на кнопку */
         bSend = (Button) findViewById(R.id.bSend);
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (personalData()) {
-                    Toast.makeText(MainActivity.this, "finansial: " + selectPersonalData() + ", " + "skills: " + selectSkills() + "; " + "work schedule: " + selectWork(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "financial stability: " + selectPersonalData() + ", " + "skills: " + selectSkills() + "; " + "work schedule: " + selectWork(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
