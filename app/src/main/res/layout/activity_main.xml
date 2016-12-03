@@ -4,8 +4,11 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.itea.android.itea_l2.MainActivity"
-    android:background="#11c226">
-    
+    tools:context="com.itea.android.itea_l2.MainActivity">
 
+
+    <com.itea.android.itea_l2.CustomUserInfoView
+        android:id="@+id/cuivTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>
