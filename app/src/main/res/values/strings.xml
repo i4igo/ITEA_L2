@@ -5,7 +5,7 @@
     <string name="tLName">Last name</string>
     <string name="tEmail">Email</string>
 
-    <string name="cbAuto">Auto</string>
+    <string name="cbAvto">Avto</string>
     <string name="cbCCard">Credit card</string>
 
     <string name="tSkills">Skills</string>
