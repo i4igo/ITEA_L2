@@ -45,9 +45,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        eName = (EditText) findViewById(R.id.eName);
+        eLName = (EditText) findViewById(R.id.eLName);
+        eMail = (EditText) findViewById(R.id.eMail);
+
+        cbAvto = (CheckBox) findViewById(R.id.cbAvto);
+        cbCCard = (CheckBox) findViewById(R.id.cbCCard);
+
+        cbJava = (CheckBox) findViewById(R.id.cbJava);
+        cbAndroid = (CheckBox) findViewById(R.id.cbAndroid);
+        cbJavaEE = (CheckBox) findViewById(R.id.cbJavaEE);
+        cbC = (CheckBox) findViewById(R.id.cbC);
+        cbPHP = (CheckBox) findViewById(R.id.cbPHP);
+        cbOther = (CheckBox) findViewById(R.id.cbOther);
+
+        rbFrelance = (RadioButton) findViewById(R.id.rbFrelance);
+        rbFulltime = (RadioButton) findViewById(R.id.rbFulltime);
+        rbRemote = (RadioButton) findViewById(R.id.rbRemote);
+        rbOther = (RadioButton) findViewById(R.id.rbOther);
+
+        bSend = (Button) findViewById(R.id.bSend);
+        bCancel = (Button) findViewById(R.id.bCancel);
+        bLater = (Button) findViewById(R.id.bLater);
+
         /**связываем переменную eName с view-элементом
          * подключаем слушатель*/
-        eName = (EditText) findViewById(R.id.eName);
         sName = eName.getText().toString();
         eName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -68,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         /**связываем переменную eLName с view-элементом
          * подключаем слушатель*/
-        eLName = (EditText) findViewById(R.id.eLName);
         sLName = eLName.getText().toString();
         eLName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -89,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
         /**связываем переменную eMail с view-элементом
          * подключаем слушатель*/
-        eMail = (EditText) findViewById(R.id.eMail);
         sMail = eMail.getText().toString();
         eMail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -108,24 +128,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        cbAvto = (CheckBox) findViewById(R.id.cbAvto);
-        cbCCard = (CheckBox) findViewById(R.id.cbCCard);
-
-        cbJava = (CheckBox) findViewById(R.id.cbJava);
-        cbAndroid = (CheckBox) findViewById(R.id.cbAndroid);
-        cbJavaEE = (CheckBox) findViewById(R.id.cbJavaEE);
-        cbC = (CheckBox) findViewById(R.id.cbC);
-        cbPHP = (CheckBox) findViewById(R.id.cbPHP);
-        cbOther = (CheckBox) findViewById(R.id.cbOther);
-
-        rbFrelance = (RadioButton) findViewById(R.id.rbFrelance);
-        rbFulltime = (RadioButton) findViewById(R.id.rbFulltime);
-        rbRemote = (RadioButton) findViewById(R.id.rbRemote);
-        rbOther = (RadioButton) findViewById(R.id.rbOther);
-        rbOther.setChecked(true);
-
         /**включаем слушатель на кнопку */
-        bSend = (Button) findViewById(R.id.bSend);
         bSend.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -135,9 +138,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        bCancel = (Button) findViewById(R.id.bCancel);
-        bLater = (Button) findViewById(R.id.bLater);
 
     }
 
@@ -227,6 +227,8 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private String selectWork(){
+        rbOther.setChecked(true);
+
         String workSchedule = "";
         if (rbFrelance.isChecked())
             workSchedule = "" + rbFrelance.getText();
