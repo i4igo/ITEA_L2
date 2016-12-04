@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**связываем view-элементы
+         * с переменными
+         */
         eName = (EditText) findViewById(R.id.eName);
         eLName = (EditText) findViewById(R.id.eLName);
         eMail = (EditText) findViewById(R.id.eMail);
@@ -63,13 +66,15 @@ public class MainActivity extends AppCompatActivity {
         rbFulltime = (RadioButton) findViewById(R.id.rbFulltime);
         rbRemote = (RadioButton) findViewById(R.id.rbRemote);
         rbOther = (RadioButton) findViewById(R.id.rbOther);
+        rbOther.setChecked(true);
 
         bSend = (Button) findViewById(R.id.bSend);
         bCancel = (Button) findViewById(R.id.bCancel);
         bLater = (Button) findViewById(R.id.bLater);
 
-        /**связываем переменную eName с view-элементом
-         * подключаем слушатель*/
+         /**подключаем слушатель
+          * на поля ввода данных
+          */
         sName = eName.getText().toString();
         eName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -88,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /**связываем переменную eLName с view-элементом
-         * подключаем слушатель*/
         sLName = eLName.getText().toString();
         eLName.addTextChangedListener(new TextWatcher() {
             @Override
@@ -108,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /**связываем переменную eMail с view-элементом
-         * подключаем слушатель*/
         sMail = eMail.getText().toString();
         eMail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -133,12 +134,17 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+
+                String answer =
+                                "financial stability: " + selectPersonalData() + ", " +
+                                "skills: " + selectSkills() + "; " +
+                                "work schedule: " + selectWork();
+
                 if (personalData()) {
-                    Toast.makeText(MainActivity.this, "financial stability: " + selectPersonalData() + ", " + "skills: " + selectSkills() + "; " + "work schedule: " + selectWork(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, answer, Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
 
     /**метод проверяет заполнение персональных данных
@@ -227,7 +233,6 @@ public class MainActivity extends AppCompatActivity {
      * @return
      */
     private String selectWork(){
-        rbOther.setChecked(true);
 
         String workSchedule = "";
         if (rbFrelance.isChecked())
