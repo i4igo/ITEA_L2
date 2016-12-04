@@ -40,104 +40,6 @@ public class MainActivity extends AppCompatActivity {
     private Button bCancel;
     private Button bLater;
 
-    /**метод проверяет заполнение персональных данных
-     * @return
-     */
-    private boolean personalData() {
-        if (!sName.equals("")) {
-            if (!sLName.equals("")) {
-                if (!sMail.equals("")) {
-                    Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName + " eMail: " + sMail, Toast.LENGTH_SHORT).show();
-                    return true;
-                } else {
-                    eMail.requestFocus();
-                    Toast.makeText(MainActivity.this, "укажите Email пользователя", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                eLName.requestFocus();
-                Toast.makeText(MainActivity.this, "укажите Last name пользователя", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            eName.requestFocus();
-            Toast.makeText(MainActivity.this, "укажите Name пользователя", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
-
-    /**формируем personal
-     * через "," перечисляем выбранные элементы
-     * @return
-     */
-    private String selectPersonalData() {
-        StringBuilder personal = new StringBuilder();
-        if (cbAvto.isChecked())
-            personal.append(cbAvto.getText());
-        if (cbCCard.isChecked()) {
-            if (personal.length() > 0)
-                personal.append(", ");
-            personal.append(cbCCard.getText());
-        }
-        if (personal.length() == 0)
-            personal.append("No");
-        return String.valueOf(personal);
-    }
-
-    /**формируем skills
-     * через "," перечисляем выбранные элементы колонки "Skills"
-     * @return
-     */
-    private String selectSkills() {
-        StringBuilder skills = new StringBuilder();
-        if (cbJava.isChecked())
-            skills.append(cbJava.getText());
-        if (cbAndroid.isChecked()) {
-            if (skills.length() > 0)
-                skills.append(", ");
-            skills.append("" + cbAndroid.getText());
-        }
-        if (cbJavaEE.isChecked()) {
-            if (skills.length() > 0)
-                skills.append(", ");
-            skills.append(cbJavaEE.getText());
-        }
-        if (cbC.isChecked()) {
-            if (skills.length() > 0)
-                skills.append(", ");
-            skills.append(cbC.getText());
-        }
-        if (cbPHP.isChecked()) {
-            if (skills.length() > 0)
-                skills.append(", ");
-            skills.append(cbPHP.getText());
-        }
-        if (cbOther.isChecked()) {
-            if (skills.length() > 0)
-                skills.append(", ");
-            skills.append(cbOther.getText());
-        }
-
-        if (skills.length() == 0)
-            skills.append("No");
-
-        return String.valueOf(skills);
-    }
-
-    /**проверка выбран ли элемент с колонки "Work schedule"
-     * @return
-     */
-    private String selectWork(){
-        String workSchedule = "";
-        if (rbFrelance.isChecked())
-            workSchedule = "" + rbFrelance.getText();
-        if (rbFulltime.isChecked())
-            workSchedule = "" + rbFulltime.getText();
-        if (rbRemote.isChecked())
-            workSchedule = "" + rbRemote.getText();
-        if (rbOther.isChecked())
-            workSchedule = "" + rbOther.getText();
-        return String.valueOf(workSchedule);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -237,5 +139,103 @@ public class MainActivity extends AppCompatActivity {
         bCancel = (Button) findViewById(R.id.bCancel);
         bLater = (Button) findViewById(R.id.bLater);
 
+    }
+
+    /**метод проверяет заполнение персональных данных
+     * @return
+     */
+    private boolean personalData() {
+        if (!sName.equals("")) {
+            if (!sLName.equals("")) {
+                if (!sMail.equals("")) {
+                    Toast.makeText(MainActivity.this, "Name: " + sName + " Last name: " + sLName + " eMail: " + sMail, Toast.LENGTH_SHORT).show();
+                    return true;
+                } else {
+                    eMail.requestFocus();
+                    Toast.makeText(MainActivity.this, "укажите Email пользователя", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                eLName.requestFocus();
+                Toast.makeText(MainActivity.this, "укажите Last name пользователя", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            eName.requestFocus();
+            Toast.makeText(MainActivity.this, "укажите Name пользователя", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    /**формируем personal
+     * через "," перечисляем выбранные элементы
+     * @return
+     */
+    private String selectPersonalData() {
+        StringBuilder personal = new StringBuilder();
+        if (cbAvto.isChecked())
+            personal.append(cbAvto.getText());
+        if (cbCCard.isChecked()) {
+            if (personal.length() > 0)
+                personal.append(", ");
+            personal.append(cbCCard.getText());
+        }
+        if (personal.length() == 0)
+            personal.append("No");
+        return String.valueOf(personal);
+    }
+
+    /**формируем skills
+     * через "," перечисляем выбранные элементы колонки "Skills"
+     * @return
+     */
+    private String selectSkills() {
+        StringBuilder skills = new StringBuilder();
+        if (cbJava.isChecked())
+            skills.append(cbJava.getText());
+        if (cbAndroid.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append("" + cbAndroid.getText());
+        }
+        if (cbJavaEE.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbJavaEE.getText());
+        }
+        if (cbC.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbC.getText());
+        }
+        if (cbPHP.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbPHP.getText());
+        }
+        if (cbOther.isChecked()) {
+            if (skills.length() > 0)
+                skills.append(", ");
+            skills.append(cbOther.getText());
+        }
+
+        if (skills.length() == 0)
+            skills.append("No");
+
+        return String.valueOf(skills);
+    }
+
+    /**проверка выбран ли элемент с колонки "Work schedule"
+     * @return
+     */
+    private String selectWork(){
+        String workSchedule = "";
+        if (rbFrelance.isChecked())
+            workSchedule = "" + rbFrelance.getText();
+        if (rbFulltime.isChecked())
+            workSchedule = "" + rbFulltime.getText();
+        if (rbRemote.isChecked())
+            workSchedule = "" + rbRemote.getText();
+        if (rbOther.isChecked())
+            workSchedule = "" + rbOther.getText();
+        return String.valueOf(workSchedule);
     }
 }
