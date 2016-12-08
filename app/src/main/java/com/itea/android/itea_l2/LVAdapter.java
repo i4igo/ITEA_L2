@@ -28,6 +28,13 @@ public class LVAdapter extends ArrayAdapter<ImageView> {
         inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    public void updateList(List<ImageView> list) {
+        this.list.clear();
+        this.list.addAll(list);
+        notifyDataSetChanged();
+        Toast.makeText(getContext(), "updateList", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public int getCount() {
         return list.size();
@@ -47,22 +54,17 @@ public class LVAdapter extends ArrayAdapter<ImageView> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        if (view == null)
+        if (view == null) {
             view = inflater.inflate(R.layout.activity_adapter, parent, false);
+        }
         ImageView ivImage = (ImageView) view.findViewById(R.id.ivImage);
 
         Picasso.with(getContext())
                 .load("http://a1.mzstatic.com/us/r30/Purple3/v4/ed/dd/e3/eddde34d-892d-a1f7-b60c-1a515dad042d/icon256x256.jpeg")
-                .resize(64, 64)
+                .resize(100, 100)
                 .into(ivImage);
 
         return view;
     }
 
-    public void updateList(List<ImageView> list) {
-        this.list.clear();
-        this.list.addAll(list);
-        notifyDataSetChanged();
-        Toast.makeText(getContext(), "updateList", Toast.LENGTH_SHORT).show();
-    }
 }
