@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">ITEA_L2</string>
 
-    <string name="bPassword">Password</string>
+    <string name="etLogin">Login</string>
+    <string name="etPassword">Password</string>
+
+    <string name="bLogin">Login</string>
 
     <string name="etName">Name</string>
     <string name="etLName">Last Name</string>
