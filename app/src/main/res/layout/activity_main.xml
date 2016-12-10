@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context="com.itea.android.itea_l2.MainActivity">
 
-    <ImageView
-        android:id="@+id/ivFromGallery"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbMyToolbar"
+        android:background="#5af4ff"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#88ddf9" />
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.Toolbar>
 
 
 </RelativeLayout>
