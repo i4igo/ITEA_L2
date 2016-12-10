@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.itea.android.itea_l2.MainActivity">
 
-    <ListView
-        android:id="@+id/lvListImage"
+    <ImageView
+        android:id="@+id/ivFromGallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"></ListView>
+        android:background="#88ddf9" />
+
 
 </RelativeLayout>
