@@ -1,27 +1,18 @@
 <resources>
     <string name="app_name">ITEA_L2</string>
 
-    <string name="tName">Name</string>
-    <string name="tLName">Last name</string>
-    <string name="tEmail">Email</string>
+    <string name="bPassword">Password</string>
 
-    <string name="cbAuto">Auto</string>
-    <string name="cbCCard">Credit card</string>
+    <string name="etName">Name</string>
+    <string name="etLName">Last Name</string>
+    <string name="etPNumber">Phone Number</string>
+    <string name="etCountry">Country</string>
+    <string name="etCity">City</string>
+    <string name="etEmail">Email</string>
+    <string name="etNotes">Notes</string>
 
-    <string name="cbJava">Java</string>
-    <string name="cbAndroid">Android</string>
-    <string name="cbJavaEE">JavaEE</string>
-    <string name="cbC">C#</string>
-    <string name="cbPHP">PHP</string>
-    <string name="cbOther">Other</string>
-
-    <string name="rbFrelance">Frelance</string>
-    <string name="rbFulltime">Fulltime</string>
-    <string name="rbRemote">Remote</string>
-    <string name="rbOther">Other</string>
-
-    <string name="bSend">Send</string>
     <string name="bCancel">Cancel</string>
-    <string name="bLater">Later</string>
+    <string name="bSkip">Skip</string>
+    <string name="bOk">Ok</string>
 
 </resources>
