@@ -15,10 +15,13 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LVAdapter extends ArrayAdapter<ImageView> {
+/**
+ * Created by Ev on 06.12.2016.
+ */
 
+public class LVAdapter extends ArrayAdapter<POJO> {
+    private List<POJO> list;
     private Context context;
-    private List<ImageView> list;
     private LayoutInflater inflater;
 
     public LVAdapter(Context context, int resource) {
@@ -28,43 +31,43 @@ public class LVAdapter extends ArrayAdapter<ImageView> {
         inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void updateList(List<ImageView> list) {
-        this.list.clear();
-        this.list.addAll(list);
-        notifyDataSetChanged();
-        Toast.makeText(getContext(), "updateList", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public int getCount() {
-        return list.size();
-    }
-
-    public List<ImageView> getList() {
+    public List<POJO> getList(){
         return list;
     }
 
     @Nullable
     @Override
-    public ImageView getItem(int position) {
+    public POJO getItem(int position) {
         return list.get(position);
+    }
+
+    /* сколько будет отображаться*/
+    @Override
+    public int getCount() {
+        return list.size();
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        if (view == null) {
-            view = inflater.inflate(R.layout.activity_adapter, parent, false);
+        if (view == null){
+            view = inflater.inflate(R.layout.each_item_list, parent, false);
         }
-        ImageView ivImage = (ImageView) view.findViewById(R.id.ivImage);
+        ImageView ivListItem = (ImageView) view.findViewById(R.id.ivListItem);
 
         Picasso.with(getContext())
                 .load("http://a1.mzstatic.com/us/r30/Purple3/v4/ed/dd/e3/eddde34d-892d-a1f7-b60c-1a515dad042d/icon256x256.jpeg")
-                .resize(100, 100)
-                .into(ivImage);
-
+                .resize(64, 64)
+                .into(ivListItem);
         return view;
     }
 
+
+    public void updateList(List<POJO> l) {
+        this.list.clear();
+        this.list.addAll(list);
+        notifyDataSetChanged();
+        Toast.makeText(getContext(), "updateList", Toast.LENGTH_SHORT).show();
+    }
 }
