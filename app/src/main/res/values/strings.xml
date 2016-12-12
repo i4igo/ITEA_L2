@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ITEA_L2</string>
+    <string name="app_name">Login</string>
 
     <string name="etLogin">Login</string>
     <string name="etPassword">Password</string>
@@ -15,7 +15,11 @@
     <string name="etNotes">Notes</string>
 
     <string name="bCancel">Cancel</string>
+    <string name="bClear">Clear</string>
     <string name="bSkip">Skip</string>
     <string name="bOk">Ok</string>
+
+    <string name="bBack">Back</string>
+    <string name="bClose">Close</string>
 
 </resources>

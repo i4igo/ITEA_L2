@@ -6,5 +6,5 @@ package com.itea.android.itea_l2;
 
 public interface Constants {
     String KEY = "DATA";
-}
 
+}

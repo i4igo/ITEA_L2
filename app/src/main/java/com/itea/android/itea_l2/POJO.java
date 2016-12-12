@@ -18,7 +18,6 @@ public class POJO implements Parcelable {
     private String etEmail;
     private String etNotes;
 
-
     public POJO(String ivImage, String etName, String etLName, String etPNumber, String etCountry, String etCity, String etEmail, String etNotes) {
         this.ivImage = ivImage;
         this.etName = etName;
@@ -30,12 +29,12 @@ public class POJO implements Parcelable {
         this.etNotes = etNotes;
     }
 
-    public String getsImage() {
+    public String getIvImage() {
         return ivImage;
     }
 
-    public void setsImage(String sImage) {
-        this.ivImage = sImage;
+    public void setIvImage(String sImage) {
+        this.ivImage = ivImage;
     }
 
     public String getEtName() {
@@ -95,6 +94,7 @@ public class POJO implements Parcelable {
     }
 
     protected POJO(Parcel in) {
+        ivImage = in.readString();
         etName = in.readString();
         etLName = in.readString();
         etPNumber = in.readString();
@@ -123,6 +123,7 @@ public class POJO implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(ivImage);
         parcel.writeString(etName);
         parcel.writeString(etLName);
         parcel.writeString(etPNumber);

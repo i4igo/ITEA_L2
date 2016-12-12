@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra(Constants.KEY, login);
                         startActivity(intent);
                         finish();
+
                     } else {
                         etPassword.requestFocus();
                         etPassword.setError("Check your password");
