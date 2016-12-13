@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.itea.android.itea_l2.R.id.ivListItem;
+
 /**
  * Created by Ev on 06.12.2016.
  */
