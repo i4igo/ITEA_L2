@@ -1,25 +1,5 @@
 <resources>
-    <string name="app_name">Login</string>
+    <string name="app_name">ITEA_L2</string>
 
-    <string name="etLogin">Login</string>
-    <string name="etPassword">Password</string>
-
-    <string name="bLogin">Login</string>
-
-    <string name="etName">Name</string>
-    <string name="etLName">Last Name</string>
-    <string name="etPNumber">Phone Number</string>
-    <string name="etCountry">Country</string>
-    <string name="etCity">City</string>
-    <string name="etEmail">Email</string>
-    <string name="etNotes">Notes</string>
-
-    <string name="bCancel">Cancel</string>
-    <string name="bClear">Clear</string>
-    <string name="bSkip">Skip</string>
-    <string name="bOk">Ok</string>
-
-    <string name="bBack">Back</string>
-    <string name="bClose">Close</string>
 
 </resources>
