@@ -61,6 +61,7 @@ public class ListActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     l.remove(position);
+                                    adapter.updateList(l);
                                 }
                             });
 
