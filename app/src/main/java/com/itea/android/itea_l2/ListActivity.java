@@ -1,9 +1,12 @@
 package com.itea.android.itea_l2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ public class ListActivity extends AppCompatActivity {
 
     private ListView lvListContacts;
     private LVAdapter adapter;
+    private List<POJO> l;
 
     private Button bBack;
     private Button bClose;
@@ -32,10 +36,39 @@ public class ListActivity extends AppCompatActivity {
             adapter = new LVAdapter(this, R.layout.each_item_list);
             lvListContacts.setAdapter(adapter);
 
-            List<POJO> l = new ArrayList<POJO>();
+            l = new ArrayList<POJO>();
             l.add(p1);
 
             adapter.updateList(l);
+
+            lvListContacts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                    AlertDialog.Builder adBuilder = new AlertDialog.Builder(ListActivity.this);
+
+                    adBuilder.setCancelable(false);
+                    adBuilder.setTitle("Внимание");
+                    adBuilder.setMessage("Вы действительно хотите удалить контакт?");
+
+                    adBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    })
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    l.remove(position);
+                                }
+                            });
+
+                    adBuilder.show();
+
+                    return false;
+                }
+            });
         }
 
 
