@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 .setNeutralButton("Maybe", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this, "Maybe", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Maybe Button", Toast.LENGTH_SHORT).show();
                     }
                 })
 
