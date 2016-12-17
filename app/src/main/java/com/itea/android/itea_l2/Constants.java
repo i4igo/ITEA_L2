@@ -7,4 +7,9 @@ package com.itea.android.itea_l2;
 public interface Constants {
     String KEY = "DATA";
 
+    String FILE_SAVE = "MyPref";
+
+    String KEY_SAVE = "SAVE_MODE";
+
+
 }
