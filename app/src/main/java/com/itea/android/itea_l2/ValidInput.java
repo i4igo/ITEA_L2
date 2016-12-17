@@ -16,29 +16,32 @@ public class ValidInput {
                     + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 
-    /**ативити 1
-     *
-     * @param content
+    /**
+     * @param editText
      * @return
      */
-    // проверка логина
-    public static boolean validLogin(String content){
-        if(content.length()!=0)
-            return true;
-        else
+    public static boolean validLogin(EditText editText) {
+        if (editText.length() == 0) {
+            editText.requestFocus();
+            editText.setError("Check your login");
             return false;
+        }
+        return true;
     }
 
     // проверка пароля
-    public static boolean validPassword(String content){
-        if(content.length()!=0)
-            return true;
-        else
+    public static boolean validPassword(EditText editText) {
+        if (editText.length() == 0) {
+            editText.setError("Check your password");
             return false;
+        }
+        return true;
     }
 
-    /**активити 2*/
-    public static boolean validBSkip(EditText editText){
+    /**
+     * активити 2
+     */
+    public static boolean validBSkip(EditText editText) {
         if (editText.length() != 0) {
             editText.requestFocus();
             editText.setError("Поле должно быть пустым");
@@ -47,27 +50,27 @@ public class ValidInput {
         return true;
     }
 
-    public static boolean validName(String content){
+    public static boolean validName(String content) {
         return content.matches(EMAIL_PATTERN);
     }
 
-    public static boolean validLName(String content){
+    public static boolean validLName(String content) {
         return content.matches(EMAIL_PATTERN);
     }
 
-    public static boolean validPNumber(String content){
+    public static boolean validPNumber(String content) {
         return content.matches(EMAIL_PATTERN);
     }
 
-    public static boolean validCountry(String content){
+    public static boolean validCountry(String content) {
         return content.matches(EMAIL_PATTERN);
     }
 
-    public static boolean validCity(String content){
+    public static boolean validCity(String content) {
         return content.matches(EMAIL_PATTERN);
     }
 
-    public static boolean validEmail(String content){
+    public static boolean validEmail(String content) {
         return content.matches(EMAIL_PATTERN);
     }
 
