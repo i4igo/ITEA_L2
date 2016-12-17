@@ -4,6 +4,8 @@
     <string name="etLogin">Login</string>
     <string name="etPassword">Password</string>
 
+    <string name="cbRemember">Remember me</string>
+
     <string name="bLogin">Login</string>
 
     <string name="etName">Name</string>
