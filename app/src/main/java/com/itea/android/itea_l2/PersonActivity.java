@@ -3,6 +3,7 @@ package com.itea.android.itea_l2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -77,20 +78,19 @@ public class PersonActivity extends AppCompatActivity {
         bSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int i=0;
-                if(ValidInput.validBSkip(etName)) i++;
-                if(ValidInput.validBSkip(etLName)) i++;
-                if(ValidInput.validBSkip(etPNumber)) i++;
-                if(ValidInput.validBSkip(etCountry)) i++;
-                if(ValidInput.validBSkip(etCity)) i++;
-                if(ValidInput.validBSkip(etEmail)) i++;
-                if(ValidInput.validBSkip(etNotes)) i++;
+                int i = 0;
+                if (ValidInput.validBSkip(etName)) i++;
+                if (ValidInput.validBSkip(etLName)) i++;
+                if (ValidInput.validBSkip(etPNumber)) i++;
+                if (ValidInput.validBSkip(etCountry)) i++;
+                if (ValidInput.validBSkip(etCity)) i++;
+                if (ValidInput.validBSkip(etEmail)) i++;
+                if (ValidInput.validBSkip(etNotes)) i++;
 
                 if (i == 7) {
                     Intent intent = new Intent(PersonActivity.this, ListActivity.class);
                     startActivity(intent);
                 }
-                // (можно сделать следующую активити с + если она пуста, при нажатии на него, бросит в это окно)
             }
         });
 
@@ -109,22 +109,38 @@ public class PersonActivity extends AppCompatActivity {
                 String sEmail = etEmail.getText().toString();
                 String sNotes = etNotes.getText().toString();
 
-                ValidInput.validName(sName);
+                if (!ValidInput.validName(sName)) {
+                    etName.setError("ошибочка братишка");
+                    etName.requestFocus();
+                }
+
                 ValidInput.validLName(sLName);
                 ValidInput.validPNumber(sPNumber);
                 ValidInput.validCountry(sCountry);
                 ValidInput.validCity(sCity);
                 ValidInput.validEmail(sEmail);
 
-
-
                 // создаем объект с введенными параметрами, передаем его в следующую активность
                 Intent intent = new Intent(PersonActivity.this, ListActivity.class);
                 intent.putExtra(Constants.KEY, new POJO(sImage, sName, sLName, sPNumber, sCountry, sCity, sEmail, sNotes));
-                startActivity(intent);
+                startActivityForResult(intent, Constants.REQUEST_CODE);
             }
         });
-
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        /*if (data == null)
+            return;*/
+
+        if (requestCode == Constants.REQUEST_CODE) {
+            if (resultCode == RESULT_OK)
+                Toast.makeText(PersonActivity.this, "not_error", Toast.LENGTH_SHORT).show();
+            else
+                Toast.makeText(PersonActivity.this, "eror", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }
