@@ -88,6 +88,6 @@ public class LVAdapter extends ArrayAdapter<POJO> {
         this.list.clear();
         this.list.addAll(l);
         notifyDataSetChanged();
-        Toast.makeText(getContext(), "updateList", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "updateList", Toast.LENGTH_SHORT).show();
     }
 }
