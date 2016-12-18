@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPref = getSharedPreferences(Constants.FILE_SAVE, MODE_PRIVATE);
         String answer = sharedPref.getString(Constants.KEY_SAVE, "");
-        if (!answer.equals("not_remember")) {
+        if (!answer.equals(Constants.KEY_NOT_SAVE)) {
             Intent intent = new Intent(MainActivity.this, PersonActivity.class);
             intent.putExtra(Constants.KEY, answer);
             startActivity(intent);
