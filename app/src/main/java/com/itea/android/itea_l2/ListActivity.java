@@ -28,72 +28,75 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        if (getIntent().getExtras() != null) {
+        bBack = (Button) findViewById(R.id.bBack);
+        bClose = (Button) findViewById(R.id.bClose);
 
-            POJO p1 = getIntent().getExtras().getParcelable(Constants.KEY);
+        //if (getIntent().getExtras() != null) {
 
-            lvListContacts = (ListView) findViewById(R.id.lvListContacts);
-            adapter = new LVAdapter(this, R.layout.each_item_list);
-            lvListContacts.setAdapter(adapter);
+        // принимаем обьект POJO
+        POJO pojo = getIntent().getExtras().getParcelable(Constants.KEY);
 
-            l = new ArrayList<POJO>();
-            l.add(p1);
+        // подключаем адаптер
+        lvListContacts = (ListView) findViewById(R.id.lvListContacts);
+        adapter = new LVAdapter(this, R.layout.each_item_list);
+        lvListContacts.setAdapter(adapter);
 
-            adapter.updateList(l);
+        // создаем ArrayList и записываем туда полученный POJO
+        l = new ArrayList<POJO>();
+        l.add(pojo);
 
-            lvListContacts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        // обновляем список
+        adapter.updateList(l);
+        //}
 
-                    AlertDialog.Builder adBuilder = new AlertDialog.Builder(ListActivity.this);
+        // удаление элементов списка
+        lvListContacts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 
-                    adBuilder.setCancelable(false);
-                    adBuilder.setTitle("Внимание");
-                    adBuilder.setMessage("Вы действительно хотите удалить контакт?");
+                AlertDialog.Builder adBuilder = new AlertDialog.Builder(ListActivity.this);
 
-                    adBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.cancel();
-                        }
-                    })
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    l.remove(position);
-                                    adapter.updateList(l);
-                                }
-                            });
+                adBuilder.setCancelable(false);
+                adBuilder.setTitle("Внимание");
+                adBuilder.setMessage("Вы действительно хотите удалить контакт?");
 
-                    adBuilder.show();
+                adBuilder.setNegativeButton(Constants.BUTTON_NO, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                })
+                        .setPositiveButton(Constants.BUTTON_OK, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                l.remove(position);
+                                adapter.updateList(l);
+                            }
+                        });
 
-                    return false;
-                }
-            });
-        }
+                adBuilder.show();
 
-
-/*
+                return false;
+            }
+        });
 
         // вернуться назад
         bBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
+                Intent intent = new Intent(ListActivity.this,PersonActivity.class);
+                setResult(RESULT_OK, intent);
+                //startActivity(intent);
+                finish();
             }
         });
 
         // закрыть
         bClose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 finish();
             }
-        });*/
-
+        });
     }
 }
-
-    /*Toast.makeText(PersonActivity.this, "у вас есть заполненные поля", Toast.LENGTH_SHORT).show();
-      если список пуст, вывести сообщение "список еще пуст"
-    */
