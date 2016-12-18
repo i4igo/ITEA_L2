@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString(Constants.KEY_SAVE, login);
                     editor.commit();
                 } else {
-                    editor.putString(Constants.KEY_SAVE, "not_remember");
+                    editor.putString(Constants.KEY_SAVE, Constants.KEY_NOT_SAVE);
                     editor.commit();
                 }
 
