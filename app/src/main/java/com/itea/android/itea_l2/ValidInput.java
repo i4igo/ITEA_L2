@@ -8,14 +8,6 @@ import android.widget.EditText;
 
 public class ValidInput {
 
-    private static final String NAME_PATTERN =
-            "^[A-Za-z0-9]{3,}";
-
-    private static final String EMAIL_PATTERN =
-            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-
-
     /**
      * @param editText
      * @return
@@ -51,28 +43,30 @@ public class ValidInput {
     }
 
     public static boolean validName(String content) {
-        return content.matches(EMAIL_PATTERN);
+        return content.matches(Constants.NAME_PATTERN);
     }
 
     public static boolean validLName(String content) {
-        return content.matches(EMAIL_PATTERN);
+        return content.matches(Constants.LAST_NAME_PATTERN);
     }
 
     public static boolean validPNumber(String content) {
-        return content.matches(EMAIL_PATTERN);
+        return content.matches(Constants.PHONE_PATTERN);
     }
 
     public static boolean validCountry(String content) {
-        return content.matches(EMAIL_PATTERN);
+        return content.matches(Constants.COUNTRY_PATTERN);
     }
 
     public static boolean validCity(String content) {
-        return content.matches(EMAIL_PATTERN);
+        return content.matches(Constants.CITY_PATTERN);
     }
 
     public static boolean validEmail(String content) {
-        return content.matches(EMAIL_PATTERN);
+        return content.matches(Constants.EMAIL_PATTERN);
     }
 
-
+    public static boolean validNote(String content) {
+        return content.matches(Constants.NOTE_PATTERN);
+    }
 }
