@@ -4,54 +4,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ivListItem"
-        android:layout_width="40dp"
-        android:layout_height="40dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tName"
-        android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivListItem"
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20sp"
+                android:hint="@string/etName"/>
+
+            <TextView
+                android:id="@+id/tLName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/etLName" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/etName"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tLName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/etLName" />
+        <TextView
+            android:id="@+id/tPNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/etPNumber"/>
 
-    <TextView
-        android:id="@+id/tPNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
+        <TextView
+            android:id="@+id/tCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/etCountry"/>
 
+        <TextView
+            android:id="@+id/tCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/etCity" />
 
-    <TextView
-        android:id="@+id/tCountry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""/>
+        <TextView
+            android:id="@+id/tEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/etEmail" />
 
-
-    <TextView
-        android:id="@+id/tCity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
-
-
-    <TextView
-        android:id="@+id/tEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="" />
-
-    <TextView
+        <TextView
         android:id="@+id/tNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="" />
+
+    </LinearLayout>
 
 </LinearLayout>
