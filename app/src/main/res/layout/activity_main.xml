@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.itea.android.itea_l2.MainActivity">
 
+    <Button
+        android:id="@+id/bShowDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show dialog"/>
+
 </RelativeLayout>
