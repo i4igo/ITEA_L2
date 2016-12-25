@@ -3,6 +3,9 @@ package com.itea.android.itea_l2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +54,24 @@ public class PersonActivity extends AppCompatActivity {
         String s = getIntent().getExtras().getString(Constants.KEY);
         getSupportActionBar().setTitle(s);
 
+        // если курсор в этом поле, отображается +38
+        etPNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if (hasFocus) {
+                    if (etPNumber.getText().toString().equals("")) {
+                        etPNumber.setText("+38");
+                        etPNumber.setSelection(etPNumber.getText().length());
+                    }
+                }
+
+                if (!hasFocus && (etPNumber.getText().toString().equals("+38")))
+                    etPNumber.setText("");
+            }
+
+        });
+
         // выход с приложения
         bCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +85,7 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                //ivPerson загрузить базовый рисунок
                 etName.setText("");
                 etLName.setText("");
                 etPNumber.setText("");
@@ -99,6 +121,7 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                int i = 0;
                 //считываем с полей данные
                 String sImage = "";
                 String sName = etName.getText().toString();
@@ -110,20 +133,48 @@ public class PersonActivity extends AppCompatActivity {
                 String sNotes = etNotes.getText().toString();
 
                 if (!ValidInput.validName(sName)) {
-                    etName.setError("ошибочка братишка");
+                    etName.setError("error input name");
                     etName.requestFocus();
+                    i = 1;
+                }
+                if (!ValidInput.validLName(sLName)) {
+                    etLName.setError("error input last name");
+                    etLName.requestFocus();
+                    i = 1;
+                }
+                if (!ValidInput.validPNumber(sPNumber)) {
+                    etPNumber.setError("error input number phone");
+                    etPNumber.requestFocus();
+                    i = 1;
                 }
 
-                ValidInput.validLName(sLName);
-                ValidInput.validPNumber(sPNumber);
-                ValidInput.validCountry(sCountry);
-                ValidInput.validCity(sCity);
-                ValidInput.validEmail(sEmail);
+                if (!ValidInput.validCountry(sCountry)) {
+                    etCountry.setError("error input country");
+                    etCountry.requestFocus();
+                    i = 1;
+                }
+                if (!ValidInput.validCity(sCity)) {
+                    etCity.setError("error input city");
+                    etCity.requestFocus();
+                    i = 1;
+                }
+                if (!ValidInput.validEmail(sEmail)) {
+                    etEmail.setError("error input email");
+                    etEmail.requestFocus();
+                    i = 1;
+                }
+                if (!ValidInput.validNotes(sNotes)) {
+                    etNotes.setError("error input notes");
+                    etNotes.requestFocus();
+                    i = 1;
+                }
 
                 // создаем объект с введенными параметрами, передаем его в следующую активность
-                Intent intent = new Intent(PersonActivity.this, ListActivity.class);
-                intent.putExtra(Constants.KEY, new POJO(sImage, sName, sLName, sPNumber, sCountry, sCity, sEmail, sNotes));
-                startActivityForResult(intent, Constants.REQUEST_CODE);
+                if (i != 1) {
+                    Intent intent = new Intent(PersonActivity.this, ListActivity.class);
+                    intent.putExtra(Constants.KEY, new POJO(sImage, sName, sLName, sPNumber, sCountry, sCity, sEmail, sNotes));
+                    startActivityForResult(intent, Constants.REQUEST_CODE);
+                }
             }
         });
     }
