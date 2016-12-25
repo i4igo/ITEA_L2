@@ -66,7 +66,7 @@ public class ValidInput {
         return content.matches(Constants.EMAIL_PATTERN);
     }
 
-    public static boolean validNote(String content) {
-        return content.matches(Constants.NOTE_PATTERN);
+    public static boolean validNotes(String content) {
+        return content.matches(Constants.NOTES_PATTERN);
     }
 }
