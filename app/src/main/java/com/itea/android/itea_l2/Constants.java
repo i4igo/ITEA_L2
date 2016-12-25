@@ -22,7 +22,7 @@ public interface Constants {
     String LAST_NAME_PATTERN = "^(([A-Za-zА-Яа-я]+)(([-]|[ ])([A-Za-zА-Яа-я])+)*)+$";
 
     // +380669301527
-    String PHONE_PATTERN = "^\\+38([0][5-9]{2})([0-9]){7}$";
+    String PHONE_PATTERN = "^\\+38([0][5-9][0-9])([0-9]){7}$";
 
     // Новая Гвинея
     String COUNTRY_PATTERN = "^([A-Za-zА-Яа-я]+)(([ ])([A-Za-zА-Яа-я])+)*$";
@@ -35,6 +35,5 @@ public interface Constants {
 
     // любые символы
     String NOTES_PATTERN = "^(.){0,100}$";
-
 
 }
