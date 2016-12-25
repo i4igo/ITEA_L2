@@ -2,6 +2,7 @@ package com.itea.android.itea_l2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.Selection;
@@ -13,22 +14,27 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PersonActivity extends AppCompatActivity {
 
-    ImageView ivPerson;
+    private ImageView ivPerson;
 
-    EditText etName;
-    EditText etLName;
-    EditText etPNumber;
-    EditText etCountry;
-    EditText etCity;
-    EditText etEmail;
-    EditText etNotes;
+    private EditText etName;
+    private EditText etLName;
+    private EditText etPNumber;
+    private EditText etCountry;
+    private EditText etCity;
+    private EditText etEmail;
+    private EditText etNotes;
 
-    Button bCancel;
-    Button bClear;
-    Button bSkip;
-    Button bOk;
+    private Button bCancel;
+    private Button bClear;
+    private Button bSkip;
+    private Button bOk;
+
+    private ArrayList<POJO> pojoList = new ArrayList<POJO>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +117,8 @@ public class PersonActivity extends AppCompatActivity {
 
                 if (i == 7) {
                     Intent intent = new Intent(PersonActivity.this, ListActivity.class);
-                    startActivity(intent);
+                    intent.putExtras(intent).putParcelableArrayListExtra(Constants.KEY, pojoList);
+                    startActivityForResult(intent, Constants.REQUEST_CODE);
                 }
             }
         });
@@ -171,8 +178,12 @@ public class PersonActivity extends AppCompatActivity {
 
                 // создаем объект с введенными параметрами, передаем его в следующую активность
                 if (i != 1) {
+
+                    POJO pojo = new POJO(sImage, sName, sLName, sPNumber, sCountry, sCity, sEmail, sNotes);
+                    pojoList.add(pojo);
+
                     Intent intent = new Intent(PersonActivity.this, ListActivity.class);
-                    intent.putExtra(Constants.KEY, new POJO(sImage, sName, sLName, sPNumber, sCountry, sCity, sEmail, sNotes));
+                    intent.putExtras(intent).putParcelableArrayListExtra(Constants.KEY, pojoList);
                     startActivityForResult(intent, Constants.REQUEST_CODE);
                 }
             }
@@ -183,13 +194,12 @@ public class PersonActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        /*if (data == null)
-            return;*/
-
         if (requestCode == Constants.REQUEST_CODE) {
-            if (resultCode == RESULT_OK)
-                Toast.makeText(PersonActivity.this, "not_error", Toast.LENGTH_SHORT).show();
-            else
+            if (resultCode == RESULT_OK) {
+                ArrayList<POJO> pojoListBack = data.getExtras().getParcelableArrayList(Constants.KEY);
+                pojoList.clear();
+                pojoList.addAll(pojoListBack);
+            } else
                 Toast.makeText(PersonActivity.this, "eror", Toast.LENGTH_SHORT).show();
         }
 
