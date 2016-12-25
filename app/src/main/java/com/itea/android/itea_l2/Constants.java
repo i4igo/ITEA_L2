@@ -16,26 +16,25 @@ public interface Constants {
     int REQUEST_CODE = 1;
 
     // Cаша, Криспиано де ла Сантисима, Робертсон О’Хара, Хана-Фани
-    String NAME_PATTERN = "^(([A-Za-zА-Яа-я]+)(([-']|[ ])([A-Za-zА-Яа-я])+)*)*$";
+    String NAME_PATTERN = "^(([A-Za-zА-Яа-я]+)(([-']|[ ])([A-Za-zА-Яа-я])+)*)+$";
 
     // Фан Тхи Ким Фук, Фан-дер-Флит, Тимофей Ефремович, Иванов
-    String LAST_NAME_PATTERN = "^(([A-Za-zА-Яа-я]+)(([-]|[ ])([A-Za-zА-Яа-я])+)*)*$";
+    String LAST_NAME_PATTERN = "^(([A-Za-zА-Яа-я]+)(([-]|[ ])([A-Za-zА-Яа-я])+)*)+$";
 
-    // +38(066)930-15-27
-    String PHONE_PATTERN = "^";
+    // +380669301527
+    String PHONE_PATTERN = "^\\+38([0][5-9]{2})([0-9]){7}$";
 
     // Новая Гвинея
-    String COUNTRY_PATTERN = "^(([A-Za-zА-Яа-я]+)(([ ])([A-Za-zА-Яа-я])+)*)*$";
+    String COUNTRY_PATTERN = "^([A-Za-zА-Яа-я]+)(([ ])([A-Za-zА-Яа-я])+)*$";
 
     // Ивано-Франковск, Нью Йорк, Уэрта-дель-Рей
-    String CITY_PATTERN = "^(([A-Za-zА-Яа-я]+)(([-]|[ ])([A-Za-zА-Яа-я])+)*)*$";
+    String CITY_PATTERN = "^([A-Za-zА-Яа-я]+)(([-]|[ ])([A-Za-zА-Яа-я])+)*$";
 
-    //
-    String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
-            "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    //ppp.f@jhdfs.com
+    String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})+$";
 
     // любые символы
-    String NOTE_PATTERN = "^[.]{100}$";
+    String NOTES_PATTERN = "^(.){0,100}$";
 
 
 }
