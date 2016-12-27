@@ -44,6 +44,16 @@ public class ListActivity extends AppCompatActivity {
         adapter.updateList(pojoList);
         }
 
+        // просмотреть контакт
+        if (pojoList != null){
+            lvListContacts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //pojoList.
+                }
+            });
+        }
+
         // удаление элементов списка
         if (pojoList != null) {
             lvListContacts.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
