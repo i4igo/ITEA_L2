@@ -1,21 +1,20 @@
 package com.itea.android.itea_l2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class PersonActivity extends AppCompatActivity {
 
@@ -33,6 +32,8 @@ public class PersonActivity extends AppCompatActivity {
     private Button bClear;
     private Button bSkip;
     private Button bOk;
+
+    private Uri uri = null;
 
     private ArrayList<POJO> pojoList = new ArrayList<POJO>();
 
@@ -59,6 +60,18 @@ public class PersonActivity extends AppCompatActivity {
         //получаем логин с активити 1 и передаем его в ToolBar
         String s = getIntent().getExtras().getString(Constants.KEY);
         getSupportActionBar().setTitle(s);
+
+        //картинка...
+        ivPerson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/png");
+                //вызываем диалоговое окно
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), Constants.PICK_IMAGE_REQUEST);
+            }
+        });
 
         // если курсор в этом поле, отображается +38
         etPNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -91,13 +104,20 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //ivPerson загрузить базовый рисунок
+                ivPerson.setImageResource(R.drawable.person);
+                uri = null;
                 etName.setText("");
+                etName.setError(null);
                 etLName.setText("");
+                etLName.setError(null);
                 etPNumber.setText("");
+                etPNumber.setError(null);
                 etCountry.setText("");
+                etCountry.setError(null);
                 etCity.setText("");
+                etCity.setError(null);
                 etEmail.setText("");
+                etEmail.setError(null);
                 etNotes.setText("");
             }
         });
@@ -107,6 +127,11 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int i = 0;
+                if (uri == null) i++;
+                else {
+                    Toast.makeText(PersonActivity.this, "clear image", Toast.LENGTH_SHORT).show();
+                    i--;
+                }
                 if (ValidInput.validBSkip(etName)) i++;
                 if (ValidInput.validBSkip(etLName)) i++;
                 if (ValidInput.validBSkip(etPNumber)) i++;
@@ -115,7 +140,7 @@ public class PersonActivity extends AppCompatActivity {
                 if (ValidInput.validBSkip(etEmail)) i++;
                 if (ValidInput.validBSkip(etNotes)) i++;
 
-                if (i == 7) {
+                if (i == 8) {
                     Intent intent = new Intent(PersonActivity.this, ListActivity.class);
                     intent.putExtras(intent).putParcelableArrayListExtra(Constants.KEY, pojoList);
                     startActivityForResult(intent, Constants.REQUEST_CODE);
@@ -130,7 +155,7 @@ public class PersonActivity extends AppCompatActivity {
 
                 int i = 0;
                 //считываем с полей данные
-                String sImage = "";
+                String sImage = null;
                 String sName = etName.getText().toString();
                 String sLName = etLName.getText().toString();
                 String sPNumber = etPNumber.getText().toString();
@@ -138,6 +163,9 @@ public class PersonActivity extends AppCompatActivity {
                 String sCity = etCity.getText().toString();
                 String sEmail = etEmail.getText().toString();
                 String sNotes = etNotes.getText().toString();
+
+                if (uri != null)
+                    sImage = uri.toString();
 
                 if (!ValidInput.validName(sName)) {
                     etName.setError("error input name");
@@ -193,6 +221,19 @@ public class PersonActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Constants.PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+
+                ivPerson = (ImageView) findViewById(R.id.ivPerson);
+                ivPerson.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         if (requestCode == Constants.REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
