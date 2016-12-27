@@ -34,7 +34,7 @@ public class POJO implements Parcelable {
     }
 
     public void setIvImage(String sImage) {
-        this.ivImage = ivImage;
+        this.ivImage = sImage;
     }
 
     public String getEtName() {
