@@ -13,6 +13,8 @@ public interface Constants {
     String BUTTON_NO = "NO";
     String BUTTON_OK = "OK";
 
+    int PICK_IMAGE_REQUEST = 12345;
+
     int REQUEST_CODE = 1;
 
     // Cаша, Криспиано де ла Сантисима, Робертсон О’Хара, Хана-Фани
@@ -35,5 +37,4 @@ public interface Constants {
 
     // любые символы
     String NOTES_PATTERN = "^(.){0,100}$";
-
 }
