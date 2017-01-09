@@ -1,30 +1,15 @@
 <resources>
     <string name="app_name">ITEA_L2</string>
 
-    <string name="tName">Name</string>
-    <string name="tLName">Last name</string>
-    <string name="tEmail">Email</string>
+    <string name="rbHandler">Handler</string>
+    <string name="rbAsyncTask">AsyncTask</string>
 
-    <string name="cbAvto">Avto</string>
-    <string name="cbCCard">Credit card</string>
+    <string name="bHack">Hack</string>
 
-    <string name="tSkills">Skills</string>
-    <string name="tWSchedule">Work schedule</string>
+    <string name="cbRun">Run</string>
 
-    <string name="cbJava">Java</string>
-    <string name="cbAndroid">Android</string>
-    <string name="cbJavaEE">JavaEE</string>
-    <string name="cbC">C#</string>
-    <string name="cbPHP">PHP</string>
-    <string name="cbOther">Other</string>
+    <string name="tvTime">Time</string>
+    <string name="tvPassword">Password hack</string>
 
-    <string name="rbFrelance">Frelance</string>
-    <string name="rbFulltime">Fulltime</string>
-    <string name="rbRemote">Remote</string>
-    <string name="rbOther">Other</string>
-
-    <string name="bSend">Send</string>
-    <string name="bCancel">Cancel</string>
-    <string name="bLater">Later</string>
 
 </resources>
