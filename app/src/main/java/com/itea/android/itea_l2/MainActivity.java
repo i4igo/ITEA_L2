@@ -67,7 +67,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void run() {
 
+                        String needToHackAT = etInPassword.getText().toString();
+
+                        // обьявляем стартовую позицию индекс
+                        int indexHachPassword = 0;
+
+                        // задаем стартовое время
+                        long timeStart = System.currentTimeMillis();
+                        StringBuilder sbHackResult = new StringBuilder();
+
+                        // проводим подбор пароля
+                        while (indexHachPassword < needToHackAT.length()) {
+
+                            // проход с первого элемента по z
+                            for (char c = '\u0000'; c < 'z'; c++) {
+
+                                if (c == needToHackAT.charAt(indexHachPassword)) {
+                                    try {
+                                        Thread.sleep(500);
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                    // создаем обьект передаваемых данных
+                                    Message message = new Message();
+                                    Bundle bundle = new Bundle();
+                                    bundle.putLong(Constants.MESSAGE_TIME, System.currentTimeMillis() - timeStart);
+                                    bundle.putString(Constants.MESSAGE_PASSWORD, sbHackResult.append(c).toString());
+                                    message.setData(bundle);
+
+                                    message.what = Constants.MESSAGE_IN_PROGRESS;
+
+                                    handler.sendMessage(message);
+
+                                    indexHachPassword++;
+                                    break;
+                                }
+                            }
+                        }
+
+                        //отправляем данные
+                        Message message = new Message();
+                        Bundle bundle = new Bundle();
+                        bundle.putLong(Constants.MESSAGE_TIME, (System.currentTimeMillis() - timeStart));
+                        bundle.putString(Constants.MESSAGE_PASSWORD, sbHackResult.toString());
+                        message.setData(bundle);
+
+                        message.what = Constants.MESSAGE_HACK_END;
+
+                        handler.sendMessage(message);
+
                     }
+
                 };
 
                 Thread threadHandler = new Thread(runnable);
@@ -125,8 +176,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             // получаем ссылку на нашу активность и доступ к GUI
             MainActivity activity = wrActivity.get();
-            if (activity != null){
-                
+            if (activity != null) {
+                // получаем данные и изменяем данные в GUI
+                Bundle bundle = msg.getData();
+                activity.tvTime.setText("" + bundle.getLong(Constants.MESSAGE_TIME) + " ms");
+                activity.tvPassword.setText(bundle.getString(Constants.MESSAGE_PASSWORD));
+
+                if (msg.what == Constants.MESSAGE_HACK_END) {
+                    activity.tvInfo.setVisibility(View.VISIBLE);
+                    activity.pb.setVisibility(View.INVISIBLE);
+                }
             }
         }
     }
