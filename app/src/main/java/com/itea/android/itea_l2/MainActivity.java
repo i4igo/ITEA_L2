@@ -1,7 +1,6 @@
 package com.itea.android.itea_l2;
 
 import android.os.AsyncTask;
-import android.os.Process;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
-            /**здесь запускается и останавливается AsyncTask
+            /**
+             * здесь запускается и останавливается AsyncTask
              * используем boolean переменную для опредения состояния потока
              *  - если запущен - остановить
              *  - в обратном случае - запустить
@@ -100,13 +99,48 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         protected Void doInBackground(String... params) {
 
-            //передаем данные
-            publishProgress();
+            // получаем данные от метода execute(), пароль который мы должны подобрать
+            String needToHackAT = params[0];
+            // обьявляем стартовую позицию индекс
+            int indexHachPassword = 0;
+            // задаем стартовое время
+            long timeStart = System.currentTimeMillis();
+            // получаем данные от метода execute(), пароль который мы должны подобрать
+            StringBuilder sbHackResult = new StringBuilder();
+
+            // проход по каждому символу пароля
+            while (indexHachPassword < needToHackAT.length()) {
+
+                // проход с первого элемента по z
+
+                for (char c = '\u0000'; c < 'z'; c++) {
+
+                    if (c == needToHackAT.charAt(indexHachPassword)) {
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        // создаем обьект передаваемых данных
+                        UpdateMessage um = new UpdateMessage(
+                                sbHackResult.append(c).toString(),
+                                (int) (System.currentTimeMillis() - timeStart)
+                        );
+
+                        //передаем данные (свой тип данных, класс UpdateMessage) в метод onProgressUpdate()
+                        publishProgress(um);
+
+                        indexHachPassword++;
+                        break;
+                    }
+                }
+            }
 
             return null;
         }
 
-        // получаем данные
+        // получаем данные с метода publishProgress()
         @Override
         protected void onProgressUpdate(UpdateMessage... values) {
             super.onProgressUpdate(values);
