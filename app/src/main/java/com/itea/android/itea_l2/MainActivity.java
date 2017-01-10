@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvTime = (TextView) findViewById(R.id.tvTime);
         tvPassword = (TextView) findViewById(R.id.tvPassword);
         tvInfo = (TextView) findViewById(R.id.tvInfo);
+
+        handler = new TestHandler(this);
     }
 
     @Override
@@ -58,8 +60,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvInfo.setVisibility(View.INVISIBLE);
 
         switch (rgMode.getCheckedRadioButtonId()) {
+
             case R.id.rbHandler:
 
+                Runnable runnable = new Runnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                };
+
+                Thread threadHandler = new Thread(runnable);
+                threadHandler.start();
 
                 break;
 
@@ -102,9 +114,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         private WeakReference<MainActivity> wrActivity;
 
+        //конструктор
+        public TestHandler(MainActivity activity) {
+            this.wrActivity = new WeakReference<MainActivity>(activity);
+        }
+
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
+            // получаем ссылку на нашу активность и доступ к GUI
+            MainActivity activity = wrActivity.get();
+            if (activity != null){
+                
+            }
         }
     }
 
