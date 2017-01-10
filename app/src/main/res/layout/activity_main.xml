@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@id/etInPassword"
         android:layout_alignTop="@+id/rgMode"
+        android:onClick="onClick"
         android:text="@string/bHack" />
 
     <CheckBox
@@ -85,5 +86,6 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/tvPassword"
         android:textColor="#ff0000"
+        android:text="PASSWORD HACK!!!"
         android:visibility="invisible" />
 </RelativeLayout>
