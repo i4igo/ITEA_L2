@@ -12,9 +12,25 @@ package com.itea.android.itea_l2;
  */
 
 public class UpdateMessage {
-    
+
     private String onHackPassword;
     private int time;
+
+    public String getOnHackPassword() {
+        return onHackPassword;
+    }
+
+    public void setOnHackPassword(String onHackPassword) {
+        this.onHackPassword = onHackPassword;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
 
     public UpdateMessage(String onHackPassword, int time) {
         super();
