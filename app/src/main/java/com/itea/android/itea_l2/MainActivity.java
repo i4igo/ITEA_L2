@@ -1,6 +1,8 @@
 package com.itea.android.itea_l2;
 
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,9 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.lang.ref.WeakReference;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,8 +30,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvPassword;
     private TextView tvInfo;
 
+    //private Handler handler;
     private AsyncTask<String, UpdateMessage, Void> asyncTask;
-    private boolean isTaskStart;
+
+    private boolean isTaskStart = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        String needToHack = etInPassword.getText().toString();
+        final String needToHack = etInPassword.getText().toString();
+        pb.setVisibility(View.VISIBLE);
+        tvInfo.setVisibility(View.INVISIBLE);
 
         switch (rgMode.getCheckedRadioButtonId()) {
             case R.id.rbHandler:
@@ -63,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              */
             case R.id.rbAsyncTask:
 
+
                 if (isTaskStart) {
 
                     // остановили обновление графики
@@ -73,7 +83,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     isTaskStart = false;
 
                 } else {
-
                     // создаем новый поток и запускаем его
                     asyncTask = new TestAsyncTask();
                     asyncTask.execute(needToHack);
@@ -83,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
 
+                break;
+
+            default:
                 break;
         }
     }
@@ -143,13 +155,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // получаем данные с метода publishProgress()
         @Override
         protected void onProgressUpdate(UpdateMessage... values) {
-            super.onProgressUpdate(values);
+            //super.onProgressUpdate(values);
+
+            tvPassword.setText(values[0].getOnHackPassword());
+            tvTime.setText("" + values[0].getTime() + " ms");
         }
 
         // получаем результат работы
         @Override
         protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+            //super.onPostExecute(aVoid);
+            pb.setVisibility(View.INVISIBLE);
+            tvInfo.setVisibility(View.VISIBLE);
+            bHack.setText("HACK");
+            isTaskStart = false;
         }
 
         // останавливаем обновление данных экрана
