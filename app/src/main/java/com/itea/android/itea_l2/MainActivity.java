@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvPassword;
     private TextView tvInfo;
 
+    private AsyncTask<String, UpdateMessage, Void> asyncTask;
+    private boolean isTaskStart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,8 +57,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
+            /**здесь запускается и останавливается AsyncTask
+             * используем boolean переменную для опредения состояния потока
+             *  - если запущен - остановить
+             *  - в обратном случае - запустить
+             */
             case R.id.rbAsyncTask:
 
+                if (isTaskStart) {
+
+                    // остановили обновление графики
+                    asyncTask.cancel(true);
+                    // кнопка снова стала "взломать пароль"
+                    bHack.setText("HACK");
+                    // связь прервана
+                    isTaskStart = false;
+
+                } else {
+
+                    // создаем новый поток и запускаем его
+                    asyncTask = new TestAsyncTask();
+                    asyncTask.execute(needToHack);
+                    // кнопка стала "стоп"
+                    bHack.setText("STOP");
+                    isTaskStart = true;
+
+                }
 
                 break;
         }
