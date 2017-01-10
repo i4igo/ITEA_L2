@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvPassword;
     private TextView tvInfo;
 
-    //private Handler handler;
+    private Handler handler;
     private AsyncTask<String, UpdateMessage, Void> asyncTask;
 
     private boolean isTaskStart = false;
@@ -96,6 +95,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             default:
                 break;
+        }
+    }
+
+    class TestHandler extends Handler {
+
+        private WeakReference<MainActivity> wrActivity;
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
         }
     }
 
